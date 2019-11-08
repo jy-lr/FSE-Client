@@ -1,0 +1,27 @@
+.graph-holder {
+    height: 162px;
+    width: 266px;
+    background: #999999;
+    margin: 16px;
+}
+
+.stock-holder {
+    display: flex;
+    justify-content: space-between;
+    background: #868686;
+    height: 48px;
+    width: 100%;
+}
+
+.singlestock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.news {
+    background: grey;
+    height: 300px;
+    width: 100%;
+}

@@ -1,0 +1,20 @@
+.nav {
+    height: 64px;
+    background: #707070;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.menu-holder {
+    height: 48px;
+    background: #999999;
+    width: 48px;
+}
+
+.logo-holder {
+    background: #999999;
+    height: 48px;
+    width: 48px;
+}

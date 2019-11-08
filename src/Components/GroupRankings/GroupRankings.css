@@ -1,0 +1,24 @@
+h2, h3 {
+    text-align: center;
+}
+
+.member-holder {
+    display: flex;
+    justify-content: space-between;
+    background: grey;
+    height: 48px;
+}
+
+.member-holder:nth-of-type(even) {
+    background: lightgray;
+}
+
+p {
+    margin: 8px;
+    color: white;
+}
+
+.members {
+    margin-top: 32px;
+}
+
