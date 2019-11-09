@@ -1,6 +1,5 @@
 import React from 'react';
-import './SearchUser.css'
-import Nav from '../Nav/Nav';
+import './SearchUser.css';
 
 class SearchUser extends React.Component {
     state = {
@@ -14,10 +13,9 @@ class SearchUser extends React.Component {
     render(){
         return (
             <>
-            <Nav />
             <div className="searchuser">
                 <form>
-                    <label htmlFor="searchuser">Username:</label>
+                    <label htmlFor="searchuser">Add Users:</label>
                     <input id="searchuser"/> 
                 </form>
                 <div className="results"> 

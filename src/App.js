@@ -1,18 +1,30 @@
 import React from 'react';
-// import CreateGroup from './Components/CreateGroup/CreateGroup';
-// import ChooseGroup from './Components/ChooseGroup/ChooseGroup';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import './App.css';
+// import PrivateRoute from './Utilities/PrivateRoute';
+// import PublicOnlyRoute from './Utilities/PublicOnlyRoute';
+import Login from './Components/Login/Login';
+import ChooseGroup from './Components/ChooseGroup/ChooseGroup';
+import Profile from './Components/Profile/Profile';
+import GroupRankings from './Components/GroupRankings/GroupRankings';
+import SingleStock from './Components/SingleStock/SingleStock';
+import CreateGroup from './Components/CreateGroup/CreateGroup';
 import SearchUser from './Components/SearchUser/SearchUser';
-// import Login from './Components/Login/Login';
-// import Register from './Components/Register/Register';
-// import Nav from './Components/Nav/Nav';
-// import Profile from './Components/Profile/Profile';
-// import GroupRankings from './Components/GroupRankings/GroupRankings';
-// import SingleStock from './Components/SingleStock/SingleStock';
+import Register from './Components/Register/Register';
 
 function App() {
   return (
     <main className='App'>
-      <SearchUser />
+      <Switch>
+        <Route path="/" exact render={() => <Login />}/>
+        <Route path={"/groups"} component={() => <ChooseGroup />}/>
+        <Route path={"/profile/:group"} component={() => <Profile />}/>
+        <Route path={"/rankings"} component={() => <GroupRankings />}/>
+        <Route path={"/stock/:id"} component={() => <SingleStock />}/>
+        <Route path={"/create-group"} component={() => <CreateGroup />}/>
+        <Route path={"/search-user"} component={() => <SearchUser />}/>
+        <Route path={"/register"} component={Register}/>
+      </Switch>
     </main>
   );
 }

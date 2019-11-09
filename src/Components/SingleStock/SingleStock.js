@@ -1,5 +1,6 @@
 import React from 'react';
 import './SingleStock.css'
+import Nav from '../Nav/Nav';
 
 class SingleStock extends React.Component {
     state = {
@@ -8,6 +9,8 @@ class SingleStock extends React.Component {
 
     render(){
         return (
+            <>
+            <Nav />
             <div className="singlestock">
                 <h2>{this.state.stock.name}</h2>
                 <div className="graph-holder"></div>
@@ -17,6 +20,7 @@ class SingleStock extends React.Component {
                 </div>
                 <div className="news"></div>
             </div>
+            </>
         );
     }
 }
