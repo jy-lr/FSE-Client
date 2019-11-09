@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Profile.css'
 import Nav from '../Nav/Nav';
 
@@ -23,10 +24,12 @@ class Profile extends React.Component {
                 <div className="stocks">
                     {this.state.userStocks.map(stock => {
                         return (
-                            <div key={stock.name} className="stock-holder">
-                                <p>{stock.name}</p>
-                                <p>{stock.mktVal}%</p>
-                            </div>
+                            <Link to={`/stock/${stock.name}`}>
+                                <div key={stock.name} className="stock-holder">
+                                    <p>{stock.name}</p>
+                                    <p>{stock.mktVal}%</p>
+                                </div>
+                            </Link>
                         );
                     })}
                 </div>

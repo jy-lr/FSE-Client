@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ChooseGroup.css'
 import Nav from '../Nav/Nav';
 
@@ -18,10 +19,12 @@ class ChooseGroup extends React.Component {
             <div className="ChooseGroup">
                 {this.state.userGroups.map(group => {
                     return (
-                        <div className="group">
-                            <h3>{group.name}</h3>
-                            <p>{group.timeLeft} days left</p>
-                        </div>
+                        <Link to={`/profile/${group.name}`}>
+                            <div className="group">
+                                <h3>{group.name}</h3>
+                                <h5>{group.timeLeft} days left</h5>
+                            </div>
+                        </Link>
                     );
                 })}
             </div>
