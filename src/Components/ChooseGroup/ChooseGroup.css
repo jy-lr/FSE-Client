@@ -1,0 +1,11 @@
+.group {
+    border: solid 2px black;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 16px;
+}
+
+.ChooseGroup {
+    margin-top: 32px;
+}
