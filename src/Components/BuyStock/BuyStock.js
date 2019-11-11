@@ -1,36 +1,52 @@
 import React from 'react';
 import './BuyStock.css';
 import Nav from '../Nav/Nav';
+import config from '../../config';
+import {Link} from 'react-router-dom';
 
 class BuyStock extends React.Component{
-    state = {
-        stocks: [
-        {name: 'FSA', mktVal: 1.4},
-        {name: 'NAA', mktVal: -2.3},
-        {name: 'FQT', mktVal: -1.4},
-        {name: 'MBAD', mktVal: 2.7},
-        {name: 'FNOO', mktVal: 3.4}
-        ]
+
+    constructor() {
+        super()
+        this.state = {
+          searchResult: [],
+          searchVal: ''
+        }
+      }
+
+    handleSearch = () => {
+        let stockQuote = this.state.searchVal
+        console.log(stockQuote)
+    
+        return fetch(`https://sandbox.iexapis.com/stable/search/${stockQuote}?token=${config.STOCK_TOKEN}`)
+          .then(res => res.json())
+          .then(data => this.setState({searchResult: data}))
+      }
+
+    searchVal = async e => {
+        await this.setState({searchVal: e.target.value})
+        console.log(this.state.searchVal)
+        this.handleSearch()
     }
 
     render(){
+        console.log(this.state.searchResult)
         return (
             <>
             <Nav />
             <div className="buy">
-                <form className="buyform">
+                <form className="buyform" >
                     <label htmlFor="symbolsearch">Search Stocks</label>
-                    <input id="symbolsearch"></input>
+                    <input id="symbolsearch" value={this.state.searchVal} onChange={(e) => this.searchVal(e)}></input>
                 </form>
             </div>
             <div className="Results">
-                {this.state.stocks.map(stock => {
+                {this.state.searchResult.map(stock => {
                     return (
-                        <div key={stock.name} className="stock">
+                        <div key={stock.symbol} className="stock"> 
                             <div className="stock-holder">
-                                <p>{stock.name}</p>
-                                <p>{stock.mktVal}%</p>
-                                <button>Buy</button>
+                                <p>{stock.symbol}</p>
+                                <Link to={`/stock/${stock.symbol}`}><button type="submit" value={stock.symbol}>Buy</button></Link>
                             </div>
                         </div>
                     )
