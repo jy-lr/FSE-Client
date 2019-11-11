@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css'
 import Nav from '../Nav/Nav';
-import UserServices from '../../Services/UserService'
+import equityService from '../../Services/equity-service';
 import Context from '../Context/Context'
 
 class Profile extends React.Component {
@@ -16,7 +16,7 @@ class Profile extends React.Component {
   componentWillMount = () => {
     console.log(this.context.selectedGroup)
     const groupid = this.context.selectedGroup.groupid
-    UserServices.getEquity(groupid)
+    equityService.getEquity(groupid)
       .then(userStocks => this.setState({userStocks}))
   }
 

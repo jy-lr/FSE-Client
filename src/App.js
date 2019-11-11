@@ -12,6 +12,8 @@ import CreateGroup from './Components/CreateGroup/CreateGroup';
 import SearchUser from './Components/SearchUser/SearchUser';
 import Register from './Components/Register/Register';
 import Context from './Components/Context/Context';
+import BuyStock from './Components/BuyStock/BuyStock';
+import SellStock from './Components/SellStock/SellStock';
 
 class App extends React.Component {
   constructor(props) {
@@ -37,13 +39,15 @@ class App extends React.Component {
       <main className='App'>
         <Context.Provider value = {contextValue}>
           <Switch>
-            <Route exact path="/" component={Login}/>
-            <Route exact path='/groups' component={ChooseGroup}/>
+            <Route path="/" exact render={() => <Login />}/>
+            <Route path={"/groups"} component={() => <ChooseGroup />}/>
             <Route path={"/profile/:group"} component={() => <Profile />}/>
             <Route path={"/rankings"} component={() => <GroupRankings />}/>
             <Route path={"/stock/:id"} component={() => <SingleStock />}/>
             <Route path={"/create-group"} component={() => <CreateGroup />}/>
             <Route path={"/search-user"} component={() => <SearchUser />}/>
+            <Route path={"/buy"} component={() => <BuyStock />}/>
+            <Route path={"/sell"} component={() => <SellStock />}/>
             <Route path={"/register"} component={Register}/>
           </Switch>
         </Context.Provider>

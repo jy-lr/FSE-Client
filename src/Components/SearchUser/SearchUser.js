@@ -21,7 +21,7 @@ class SearchUser extends React.Component {
                 <div className="results"> 
                     {this.state.users.map(user => {
                         return (
-                            <div className="user">
+                            <div key={user.id} className="user">
                                 <h3>{user.name}</h3>
                             </div>
                         );

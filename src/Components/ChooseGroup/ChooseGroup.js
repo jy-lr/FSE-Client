@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './ChooseGroup.css'
+import './ChooseGroup.css';
 import Nav from '../Nav/Nav';
-import UserService from '../../Services/UserService'
-import Context from '../Context/Context'
+import userGroupService from '../../Services/user-group-service';
+import Context from '../Context/Context';
 
 //api get usergroup
 
@@ -15,7 +15,7 @@ class ChooseGroup extends React.Component {
   }
 
   componentDidMount = () => {
-    UserService.getAllofUsersGroups()
+    userGroupService.getAllofUsersGroups()
     .then(userGroups => this.setState({userGroups}))
   }
 
