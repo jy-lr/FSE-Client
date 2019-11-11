@@ -9,10 +9,10 @@ class CreateGroup extends React.Component {
             <>
             <Nav/>
             <div className="creategroup">
+            <SearchUser/>
                 <form className="groupform">
                     <label htmlFor="groupname">Group Name</label>
                     <input id="groupname"></input>
-                    <SearchUser/>
                     <button>Start</button>
                 </form>
             </div>

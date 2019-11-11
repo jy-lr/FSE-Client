@@ -11,6 +11,8 @@ import SingleStock from './Components/SingleStock/SingleStock';
 import CreateGroup from './Components/CreateGroup/CreateGroup';
 import SearchUser from './Components/SearchUser/SearchUser';
 import Register from './Components/Register/Register';
+import BuyStock from './Components/BuyStock/BuyStock';
+import SellStock from './Components/SellStock/SellStock';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path={"/stock/:id"} component={() => <SingleStock />}/>
         <Route path={"/create-group"} component={() => <CreateGroup />}/>
         <Route path={"/search-user"} component={() => <SearchUser />}/>
+        <Route path={"/buy"} component={() => <BuyStock />}/>
+        <Route path={"/sell"} component={() => <SellStock />}/>
         <Route path={"/register"} component={Register}/>
       </Switch>
     </main>

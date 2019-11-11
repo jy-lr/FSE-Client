@@ -19,7 +19,7 @@ class ChooseGroup extends React.Component {
             <div className="ChooseGroup">
                 {this.state.userGroups.map(group => {
                     return (
-                        <Link to={`/profile/${group.name}`}>
+                        <Link key={group.id} to={`/profile/${group.name}`}>
                             <div className="group">
                                 <h3>{group.name}</h3>
                                 <h5>{group.timeLeft} days left</h5>
