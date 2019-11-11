@@ -5,12 +5,13 @@
     margin: 16px;
 }
 
-.stock-holder {
+.stock-info {
     display: flex;
     justify-content: space-between;
     background: #868686;
-    height: 48px;
+    height: 8rem;
     width: 100%;
+    flex-direction: column;
 }
 
 .singlestock {
@@ -24,4 +25,16 @@
     background: grey;
     height: 300px;
     width: 100%;
+}
+
+.stock-info-container {
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    width: 100%;
+}
+
+.buy-form {
+    display: flex;
+    flex-direction: row;
 }
