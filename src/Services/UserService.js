@@ -1,3 +1,5 @@
+import TokenServices from './TokenService'
+
 const userservice = {
   postLogin(user_name, password) {
     return fetch('http://localhost:8000/api/login', {
@@ -41,7 +43,7 @@ const userservice = {
   getGroupId(id) {
     return fetch(`http://localhost:8000/api/group/${id}`, {
       headers: {
-        'Authorization': `bearer ${TokenService.getAuthToken()}`
+        'Authorization': `bearer ${TokenServices.getAuthToken()}`
       },
     })
     .then(res => 
@@ -65,7 +67,7 @@ const userservice = {
   getEquity(groupid) {
     return fetch(`http://localhost:8000/api/equity/${groupid}`, {
       headers: {
-        'Authorization': `bearer ${TokenService.getAuthToken()}`
+        'Authorization': `bearer ${TokenServices.getAuthToken()}`
       },
     })
     .then(res => 
@@ -87,9 +89,10 @@ const userservice = {
         res.json())
   },
   getAllofUsersGroups() {
+    const token = TokenServices.getAuthToken()
     return fetch('http://localhost:8000/api/usergroup', {
       headers: {
-        'Authorization': `bearer ${TokenService.getAuthToken()}`
+        'Authorization': `bearer ${token}`
       }
     })
     .then(res => 
@@ -100,7 +103,7 @@ const userservice = {
   getAllofGroupsUsers(groupid) {
     return fetch(`http://localhost:8000/api/usergroup/${groupid}`, {
       headers: {
-        'Authorization': `bearer ${TokenService.getAuthToken()}`
+        'Authorization': `bearer ${TokenServices.getAuthToken()}`
       }
     })
     .then(res => 
@@ -111,7 +114,7 @@ const userservice = {
   getAllUsers() {
     return fetch(`http://localhost:8000/api/user`, {
       headers: {
-        'Authorization': `bearer ${TokenService.getAuthToken()}`
+        'Authorization': `bearer ${TokenServices.getAuthToken()}`
       }
     })
     .then(res => 
@@ -123,4 +126,4 @@ const userservice = {
 
 export default userservice;
 
-https://sandbox.iexapis.com/stable/stock/aapl/quote?token=Tpk_8d02cb5986fb405bad198d090b3ac15a
+// https://sandbox.iexapis.com/stable/stock/aapl/quote?token=Tpk_8d02cb5986fb405bad198d090b3ac15a
