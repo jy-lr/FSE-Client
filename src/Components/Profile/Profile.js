@@ -2,41 +2,48 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css'
 import Nav from '../Nav/Nav';
+import UserServices from '../../Services/UserService'
+import Context from '../Context/Context'
 
 class Profile extends React.Component {
-    state = { 
-        equity: 10432,
-        userStocks: [
-            {name: 'FSA', mktVal: 1.4},
-            {name: 'NAA', mktVal: -2.3},
-            {name: 'FQT', mktVal: -1.4},
-            {name: 'MBAD', mktVal: 2.7},
-            {name: 'FNOO', mktVal: 3.4},
-    ]}
+  static contextType = Context
 
-    render(){
-        return (
-            <>
-            <Nav />
-            <div className="profile">
-                <h1>Equity: ${this.state.equity}</h1>
-                <div className="graph-holder"></div>
-                <div className="stocks">
-                    {this.state.userStocks.map(stock => {
-                        return (
-                            <Link to={`/stock/${stock.name}`}>
-                                <div key={stock.name} className="stock-holder">
-                                    <p>{stock.name}</p>
-                                    <p>{stock.mktVal}%</p>
-                                </div>
-                            </Link>
-                        );
-                    })}
-                </div>
-            </div>
-            </>
-        );
-    }
+  state = { 
+    equity: 10432,
+    userStocks: []
+  }
+
+  componentWillMount = () => {
+    console.log(this.context.selectedGroup)
+    const groupid = this.context.selectedGroup.groupid
+    UserServices.getEquity(groupid)
+      .then(userStocks => this.setState({userStocks}))
+  }
+
+  render(){
+    console.log(this.state.userStocks)
+      return (
+        <>
+          <Nav />
+          <div className="profile">
+              <h1>Equity: ${this.state.equity}</h1>
+              <div className="graph-holder"></div>
+              <div className="stocks">
+                {this.state.userStocks.map(stock => {
+                  return (
+                    <Link to={`/stock/${stock.stock_symbol}`}>
+                      <div key={stock.stock_symbol} className="stock-holder">
+                        <p>{stock.stock_symbol}</p>
+                        <p>{stock.num_of_shares} shares</p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+          </div>
+        </>
+      );
+  }
 }
 
 export default Profile;
