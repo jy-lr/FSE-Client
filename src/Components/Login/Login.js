@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './Login.css';
-import TokenService from '../../Services/TokenService'
+import TokenService from '../../Services/token-service';
 import config from '../../config'
 
 class Login extends React.Component{
@@ -45,4 +45,4 @@ class Login extends React.Component{
   }
 }
 
-export default Login;
+export default withRouter(Login);
