@@ -21,7 +21,7 @@ class Profile extends React.Component {
   }
 
   render(){
-    console.log(this.state.userStocks)
+    console.log('asdfsdf')
       return (
         <>
           <Nav />
