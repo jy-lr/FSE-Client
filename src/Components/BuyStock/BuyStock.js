@@ -3,8 +3,10 @@ import './BuyStock.css';
 import Nav from '../Nav/Nav';
 import config from '../../config';
 import {Link} from 'react-router-dom';
+import Context from '../Context/Context'
 
 class BuyStock extends React.Component{
+    static contextType = Context
 
     constructor() {
         super()
