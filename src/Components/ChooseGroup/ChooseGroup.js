@@ -30,7 +30,7 @@ class ChooseGroup extends React.Component {
       <div className="ChooseGroup">
         {this.state.userGroups.map(group => {
           return (
-            <Link to={`/profile/${group.group_name}`}>
+            <Link key={group.id} to={`/profile/${group.group_name}`}>
               <div className="group" onClick={() => this.handleClick(group)}>
                 <h3>{group.group_name}</h3>
                 <h5>{group.timeLeft} days left</h5>
