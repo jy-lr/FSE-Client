@@ -11,16 +11,12 @@ class SearchUser extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: [
-      {id: 1, full_name: 'Lance'},
-      {id: 2, full_name: 'Jun'},
-      {id: 3, full_name: 'Isaac'}],
+      users: [],
     }
   }
 
   componentDidMount = () => {
-    userService.getAllUsers()
-      .then(res => res.json())
+    return userService.getAllUsers()
       .then(data => this.setState({users: data}))
   }
 

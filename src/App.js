@@ -14,17 +14,39 @@ import Register from './Components/Register/Register';
 import Context from './Components/Context/Context';
 import BuyStock from './Components/BuyStock/BuyStock';
 import SellStock from './Components/SellStock/SellStock';
+import userGroupService from './Services/user-group-service'
 
 class App extends React.Component {
+  context 
+
   constructor(props) {
     super(props)
     this.state = {
-      selectedGroup: {}
+      selectedGroup: {},
+      updateBalanceGroup: {}
     }
   }
 
   saveSelectedGroupData = (selectedGroupData) => {
     this.setState({selectedGroup: selectedGroupData})
+    this.setState({updateBalanceGroup: selectedGroupData})
+  }
+
+  updateSelectedGroupData = async updatedBalance => {
+    console.log(this.state.updateBalanceGroup)
+    await this.setState(prevState => {
+      let updateBalanceGroup = Object.assign({}, prevState.updateBalanceGroup)
+      updateBalanceGroup.cash_balance = updatedBalance
+      return {updateBalanceGroup}
+    })
+
+    const id = parseInt(this.state.updateBalanceGroup.id)
+    const cashBalance = parseInt(this.state.updateBalanceGroup.cash_balance)
+
+    console.log(id, cashBalance)
+
+    userGroupService.updateCashBalance(id, cashBalance)
+
   }
 
 
@@ -33,6 +55,8 @@ class App extends React.Component {
     const contextValue = {
       saveSelectedGroupData: this.saveSelectedGroupData,
       selectedGroup: this.state.selectedGroup,
+      updateSelectedGroupData: this.updateSelectedGroupData,
+      updatedBalance: this.state.updateBalanceGroup
     }
 
     return (
@@ -42,13 +66,13 @@ class App extends React.Component {
             <Route exact path="/" component={Login}/>
             <Route exact path="/groups" component={ChooseGroup}/>
             <Route exact path="/profile/:groupid" component={Profile}/>
-            <Route path={"/rankings"} component={() => <GroupRankings />}/>
+            <Route exact path={"/rankings"} component={() => <GroupRankings />}/>
             <Route exact path="/stock/:id" component={SingleStock}/>
-            <Route path={"/create-group"} component={() => <CreateGroup />}/>
-            <Route path={"/search-user"} component={() => <SearchUser />}/>
-            <Route path={"/buy"} component={() => <BuyStock />}/>
-            <Route path={"/sell"} component={() => <SellStock />}/>
-            <Route path={"/register"} component={Register}/>
+            <Route exact path={"/create-group"} component={() => <CreateGroup />}/>
+            <Route exact path={"/search-user"} component={() => <SearchUser />}/>
+            <Route exact path={"/buy"} component={() => <BuyStock />}/>
+            <Route exact path={"/sell"} component={() => <SellStock />}/>
+            <Route exact path={"/register"} component={Register}/>
           </Switch>
         </Context.Provider>
       </main>

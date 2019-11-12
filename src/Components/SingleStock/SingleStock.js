@@ -13,7 +13,9 @@ class SingleStock extends React.Component {
     this.state = {
       stock: this.props.match.params.id,
       stockData: [],
-      quantity: 0
+      quantity: 0,
+      totalCost: 0,
+      availableBalance: 0
     }
   }
 
@@ -28,21 +30,35 @@ class SingleStock extends React.Component {
     await this.setState({quantity: e.target.value})
   }
 
-  handleBuy = (e) => {
+  handleBuy = async e => {
     e.preventDefault()
     const stock = this.state.stock
     const quantity = this.state.quantity
-    // const groupid = this.context.selectedGroup.id
-    const groupid = 1
-    console.log(stock, quantity, groupid)
+    const groupid = this.context.selectedGroup.id
+    let totalCost = quantity*this.state.stockData.iexRealtimePrice
+
+    await this.setState({totalCost: totalCost})
+
+    this.handleAvailableBalance()
+    
 
     return equityService.buyStock(stock, quantity, groupid)
       .then(data => data)
     
+  }
+
+  handleAvailableBalance = () =>{
+    let leftBalance = this.context.selectedGroup.cash_balance - this.state.totalCost
+
+    this.setState({availableBalance: leftBalance})
+
+    this.context.updateSelectedGroupData(this.state.availableBalance)
     
   }
 
   render(){
+    console.log(this.context.updatedBalance)
+    
     return (
       <>
         <Nav />
@@ -81,7 +97,7 @@ class SingleStock extends React.Component {
               </div>
             </section>
             <form className="buy-form" onSubmit={(e) => this.handleBuy(e)}>
-              <p>Avaiable Balance: <span>20000</span></p>
+              <p>Avaiable Balance: {this.context.updatedBalance.cash_balance}</p>
               <div>
                 <lable>Quantity</lable>
                 <input value={this.state.quantity} className="Quantity-input" onChange={(e) => this.quantityInput(e)}/>
