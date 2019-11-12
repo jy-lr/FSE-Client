@@ -41,7 +41,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Login}/>
             <Route exact path="/groups" component={ChooseGroup}/>
-            <Route exact path="/groups/:groupid" component={Profile}/>
+            <Route exact path="/profile/:groupid" component={Profile}/>
             <Route path={"/rankings"} component={() => <GroupRankings />}/>
             <Route exact path="/stock/:id" component={SingleStock}/>
             <Route path={"/create-group"} component={() => <CreateGroup />}/>

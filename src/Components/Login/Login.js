@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './Login.css';
-import TokenService from '../../Services/TokenService'
+import TokenService from '../../Services/token-service';
+import userService from '../../Services/user-service';
 import config from '../../config'
 
 class Login extends React.Component{
@@ -13,6 +14,25 @@ class Login extends React.Component{
     history: {
       push: () => {},
     },
+  }
+
+  handleSubmitJwtAuth = ev => {
+    ev.preventDefault()
+    this.setState({ error: null })
+    const { user_name, password } = ev.target
+      userService.postLogin({
+      user_name: user_name.value,
+      password: password.value,
+    })
+    .then(res => {
+        user_name.value = ''
+        password.value = ''
+        TokenService.saveAuthToken(res.authToken)
+        this.onLoginSuccess();
+    })
+    .catch(res => {
+        this.setState({ error: res.error })
+    })
   }
 
   onLoginSuccess = () => {
@@ -27,17 +47,21 @@ class Login extends React.Component{
   }
 
   render(){
+    const { error } = this.state;
     return (
       <div className="login">
           <div className="image-placeholder"></div>
           <hr className="grey-bar"/>
-          <form>
-              <label htmlFor="username">Username</label>
-              <input id="username"/>
+          <form onSubmit={this.handleSubmitJwtAuth}>
+              <div role='alert'>
+                {error && <p className='red'>{error}</p>}
+              </div>
+              <label htmlFor="user_name">Username</label>
+              <input id="user_name"/>
               <label htmlFor="password">Password</label>
-              <input id="password"/>
-              <button>Login</button>
-              <button>Register</button>
+              <input type="password" id="password"/>
+              <button type="submit">Login</button>
+              <Link to="/register"><button>Register</button></Link>
               <button onClick={() => this.handleDemo()}>Demo</button>
           </form>
       </div>
@@ -45,4 +69,4 @@ class Login extends React.Component{
   }
 }
 
-export default Login;
+export default withRouter(Login);
