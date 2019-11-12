@@ -20,7 +20,7 @@ const userService = {
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify(user_name, password, full_name),
+      body: JSON.stringify(full_name, user_name, password),
     })
     .then(res => 
       (!res.ok)?

@@ -39,11 +39,11 @@ class App extends React.Component {
       <main className='App'>
         <Context.Provider value = {contextValue}>
           <Switch>
-            <Route path="/" exact render={() => <Login />}/>
-            <Route path={"/groups"} component={() => <ChooseGroup />}/>
-            <Route path={"/profile/:group"} component={() => <Profile />}/>
+            <Route exact path="/" component={Login}/>
+            <Route exact path="/groups" component={ChooseGroup}/>
+            <Route exact path="/profile/:groupid" component={Profile}/>
             <Route path={"/rankings"} component={() => <GroupRankings />}/>
-            <Route path={"/stock/:id"} component={() => <SingleStock />}/>
+            <Route exact path="/stock/:id" component={SingleStock}/>
             <Route path={"/create-group"} component={() => <CreateGroup />}/>
             <Route path={"/search-user"} component={() => <SearchUser />}/>
             <Route path={"/buy"} component={() => <BuyStock />}/>
