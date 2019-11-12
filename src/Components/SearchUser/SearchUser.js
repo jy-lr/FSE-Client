@@ -24,6 +24,19 @@ class SearchUser extends React.Component {
     .then(users => this.setState({users}))
   }
 
+  componentDidMount = () => {
+    return userService.getAllUsers()
+      .then(data => this.setState({users: data}))
+  }
+
+  addUserToGroup = (e) => {
+    const userId = e.target.val
+    const groupId = this.context.selectedGroup.id
+    const cashBalance = 10000
+    return userGroupService.addUserToGroup(userId, groupId, cashBalance)
+      .then(res => res.json())
+  }
+
   render(){
     return (
       <>
