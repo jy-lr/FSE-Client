@@ -28,6 +28,7 @@ const userGroupService = {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
+            'Authorization': `bearer ${TokenService.getAuthToken()}`
           },
           body: JSON.stringify(userid, groupid, cash_balance),
         })

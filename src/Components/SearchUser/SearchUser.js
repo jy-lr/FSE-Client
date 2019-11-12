@@ -1,6 +1,6 @@
 import React from 'react';
 import './SearchUser.css';
-import userService from '../../Services/UserService'
+import userService from '../../Services/user-service'
 import userGroupService from '../../Services/user-group-service'
 import Context from '../Context/Context'
 
@@ -11,25 +11,17 @@ class SearchUser extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: [
-      {id: 1, full_name: 'Lance'},
-      {id: 2, full_name: 'Jun'},
-      {id: 3, full_name: 'Isaac'}],
+      users: [],
+      searchTerm: ''
     }
   }
 
-  componentDidMount = () => {
-    userService.getAllUsers()
-      .then(res => res.json())
-      .then(data => this.setState({users: data}))
-  }
-
-  addUserToGroup = (e) => {
-    const userId = e.target.val
-    const groupId = this.context.selectedGroup.id
-    const cashBalance = 10000
-    return userGroupService.addUserToGroup(userId, groupId, cashBalance)
-      .then(res => res.json())
+  handleSearchUser(e){
+    e.preventDefault();
+    let searchTerm = (e.target.value)
+    this.setState({searchTerm})
+    userService.getAllUsers(searchTerm)
+    .then(users => this.setState({users}))
   }
 
   render(){
@@ -38,14 +30,14 @@ class SearchUser extends React.Component {
       <div className="searchuser">
         <form>
           <label htmlFor="searchuser">Add Users:</label>
-          <input id="searchuser"/> 
+          <input onChange={e => this.handleSearchUser(e)} id="searchuser" value={this.state.searchTerm}/> 
         </form>
         <div className="results"> 
           {this.state.users.map(user => {
             return (
               <div key={user.id} className="user">
-                <button value={user.id} onClick={(e) => this.addUserToGroup(e)}>add</button>
-                <h3>{user.full_name}</h3>
+                <button value={user.id} onClick={(e) => this.handleAddUser(e)}>add</button>
+                <h3>{user.user_name}</h3>
               </div>
             );
           })}

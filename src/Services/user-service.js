@@ -27,8 +27,9 @@ const userService = {
         res.json().then(e => Promise.reject(e)):
         res.json())
   },
-  getAllUsers() {
-    return fetch(`http://localhost:8000/api/user`, {
+  getAllUsers(searchTerm) {
+    console.log(searchTerm)
+    return fetch(`http://localhost:8000/api/user?searchTerm=${searchTerm}`, {
       headers: {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       }
