@@ -9,7 +9,6 @@ import userService from '../../Services/user-service';
 class Profile extends React.Component {
  static contextType = Context
  state = {
-   equity: 10432,
    userStocks: [],
    currentStockData: []
  }
@@ -17,7 +16,9 @@ class Profile extends React.Component {
    console.log(this.context.selectedGroup)
    const groupid = this.context.selectedGroup.groupid
    equityService.getEquity(groupid)
-     .then(userStocks => this.setState({userStocks}))
+     .then(userStocks => {
+       this.setState({userStocks})
+      })
      .then(() => this.getCurrentData())
      .then(res => res.json())
      .then(current => this.setState({currentStockData: current}))
@@ -58,6 +59,7 @@ class Profile extends React.Component {
          <div className="profile">
              <h1>Equity: ${this.state.equity}</h1>
              <div className="graph-holder"></div>
+             <Link to="/buy"><button>Search</button></Link>
              <div className="stocks">
                {this.state.userStocks.map(stock => {
                  return (

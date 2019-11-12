@@ -48,7 +48,7 @@ class BuyStock extends React.Component{
                         <div key={stock.symbol} className="stock"> 
                             <div className="stock-holder">
                                 <p>{stock.symbol}</p>
-                                <Link to={`/stock/${stock.symbol}`}><button type="submit" value={stock.symbol}>Buy</button></Link>
+                                <Link to={`/stock/${stock.symbol}`}><button type="submit" value={stock.symbol}>Review</button></Link>
                             </div>
                         </div>
                     )

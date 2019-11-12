@@ -9,7 +9,6 @@
     display: flex;
     justify-content: space-between;
     background: #868686;
-    height: 8rem;
     width: 100%;
     flex-direction: column;
 }

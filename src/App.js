@@ -23,7 +23,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       selectedGroup: {},
-      updateBalanceGroup: {}
+      updateBalanceGroup: {},
     }
   }
 
@@ -47,6 +47,8 @@ class App extends React.Component {
 
     userGroupService.updateCashBalance(id, cashBalance)
 
+
+
   }
 
 
@@ -56,7 +58,7 @@ class App extends React.Component {
       saveSelectedGroupData: this.saveSelectedGroupData,
       selectedGroup: this.state.selectedGroup,
       updateSelectedGroupData: this.updateSelectedGroupData,
-      updatedBalance: this.state.updateBalanceGroup
+      updatedBalance: this.state.updateBalanceGroup,
     }
 
     return (

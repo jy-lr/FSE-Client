@@ -15,7 +15,8 @@ class SingleStock extends React.Component {
       stockData: [],
       quantity: 0,
       totalCost: 0,
-      availableBalance: 0
+      availableBalance: 0,
+      userStocks: []
     }
   }
 
@@ -24,6 +25,14 @@ class SingleStock extends React.Component {
     return fetch(`https://sandbox.iexapis.com/stable/stock/${stockQuote}/quote?token=${config.STOCK_TOKEN}`)
       .then(res => res.json())
       .then(data => this.setState({stockData: data}))
+  }
+
+  componentWillMount = () => {
+    const groupid = this.context.selectedGroup.groupid
+    equityService.getEquity(groupid)
+      .then(userStocks => {
+        this.setState({userStocks})
+       })
   }
 
   quantityInput = async e => {
@@ -41,9 +50,18 @@ class SingleStock extends React.Component {
 
     this.handleAvailableBalance()
     
-
-    return equityService.buyStock(stock, quantity, groupid)
+    const filterQuote = this.state.userStocks.filter(data => data.stock_symbol === stock)
+    console.log(filterQuote)
+    if (filterQuote.length < 1) {
+      equityService.buyStock(stock, quantity, groupid)
       .then(data => data)
+    } else {
+      const filteredQuoteId = filterQuote[0].id
+      const filteredQuoteNum = parseInt(filterQuote[0].num_of_shares) + parseInt(this.state.quantity)
+      equityService.updateStockEquity(filteredQuoteId, filteredQuoteNum)
+    }
+
+
     
   }
 
@@ -104,6 +122,13 @@ class SingleStock extends React.Component {
               </div>
               <button className="single-stock-buy-button" type="submit">Buy</button>
             </form>
+            {/* <form className="sell-form" onSubmit={(e) => this.handleBuy(e)}>
+              <div>
+                <lable>Quantity</lable>
+                <input value={this.state.quantity} className="Quantity-input" onChange={(e) => this.quantityInput(e)}/>
+              </div>
+              <button className="single-stock-sell-button" type="submit">Sell</button>
+            </form> */}
             
           </div>
             <div className="news"></div>
