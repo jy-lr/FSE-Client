@@ -75,8 +75,8 @@ class SingleStock extends React.Component {
 
 
   handleAvailableBalance = () =>{
-    let leftBalance = this.context.updateBalanceGroup.cash_balance - this.state.totalCost
-    console.log(this.context.updateBalanceGroup.cash_balance, this.state.totalCost,  leftBalance)
+    let leftBalance = this.context.updateBalance.cash_balance - this.state.totalCost
+    console.log(this.context.updateBalance.cash_balance, this.state.totalCost,  leftBalance)
 
     this.setState({availableBalance: leftBalance})
 
@@ -125,7 +125,7 @@ class SingleStock extends React.Component {
               </div>
             </section>
             <form className="buy-form" onSubmit={(e) => this.handleBuy(e)}>
-              <p>Avaiable Balance: {this.context.updateBalanceGroup.cash_balance}</p>
+              <p>Avaiable Balance: {this.context.updateBalance.cash_balance}</p>
               <div>
                 <lable>Quantity</lable>
                 <input value={this.state.quantity} className="Quantity-input" onChange={(e) => this.quantityInput(e)}/>

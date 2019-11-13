@@ -65,7 +65,7 @@ class App extends React.Component {
       saveSelectedGroupData: this.saveSelectedGroupData,
       selectedGroup: this.state.selectedGroup,
       updateSelectedGroupData: this.updateSelectedGroupData,
-      updateBalanceGroup: this.state.updateBalanceGroup,
+      updateBalance: this.state.updateBalanceGroup,
     }
 
     return (
