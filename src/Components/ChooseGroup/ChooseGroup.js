@@ -23,6 +23,15 @@ class ChooseGroup extends React.Component {
     this.context.saveSelectedGroupData(group)
   }
 
+  calculateTimeLeft(date_created){
+    let endDate = new Date(date_created)
+    endDate.setDate(endDate.getDate() + 30)
+    let now = new Date()
+    const diffTime = Math.abs(endDate - now);
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
+    return diffDays
+  }
+
   render(){
     return (
       <>
@@ -33,7 +42,7 @@ class ChooseGroup extends React.Component {
             <Link key={group.id} to={`/profile/${group.group_name}`}>
               <div className="group" onClick={() => this.handleClick(group)}>
                 <h3>{group.group_name}</h3>
-                <h5>{group.timeLeft} days left</h5>
+                <h5>{this.calculateTimeLeft(group.date_created)} days left</h5>
               </div>
             </Link>
           );

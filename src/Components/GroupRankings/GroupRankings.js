@@ -63,11 +63,11 @@ class GroupRankings extends React.Component {
         let users = this.state.group;
 
         for(let i = 0;i < users.length; i++){
-            for(let i = 0; i < userStocks.length; i++){
+            for(let j = 0; j < userStocks.length; j++){
                 if(i !== userStocks.length - 1){
-                  queryPart = `${userStocks[i].stock_symbol},`;
+                  queryPart = `${userStocks[j].stock_symbol}`;
                 } else {
-                  queryPart = `${userStocks[i].stock_symbol}`;
+                  queryPart = `${userStocks[j].stock_symbol},`;
                 }
                 query += queryPart;
             }
