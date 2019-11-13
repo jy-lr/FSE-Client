@@ -5,16 +5,18 @@ class Graph extends React.Component {
   constructor() {
     super();
     this.state = {
-      percent: 0, data: this.getData(0)
+      percent: 0, data: this.getData(100)
     };
   }
 
   componentDidMount() {
+    const conversion = 100/30
+    const daysLeftConverted = conversion*this.props.days
     let percent = 0;
     this.setStateInterval = window.setInterval(() => {
-      percent += (1);
+      percent += (100-daysLeftConverted);
       this.setState({
-        percent, data: this.getData(75)
+        percent, data: this.getData(daysLeftConverted)
       });
     }, 1000);
   }
@@ -28,6 +30,7 @@ class Graph extends React.Component {
   }
 
   render() {
+    console.log(this.props.days)
     return (
       <div>
         <svg viewBox="0 0 400 400" width="10rem" height="10rem">
@@ -41,7 +44,7 @@ class Graph extends React.Component {
             labels={() => null}
             style={{
               data: { fill: ({ datum }) => {
-                const color = datum.y > 70 ? "red" : "green";
+                const color = datum.y > 30 ? "green" : "red";
                 return datum.x === 1 ? color : "transparent";
               }
               }
@@ -53,7 +56,7 @@ class Graph extends React.Component {
                 <VictoryLabel
                   textAnchor="middle" verticalAnchor="middle"
                   x={200} y={200}
-                  text={`5 Days Left`}
+                  text={`${this.props.days} Days Left`}
                   style={{ fontSize: 30 }}
                 />
               );
