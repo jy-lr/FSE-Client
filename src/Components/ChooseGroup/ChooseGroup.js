@@ -4,6 +4,7 @@ import './ChooseGroup.css';
 import Nav from '../Nav/Nav';
 import userGroupService from '../../Services/user-group-service';
 import Context from '../Context/Context';
+import Graph from '../Graph/daysLeftGraph'
 
 //api get usergroup
 
@@ -42,7 +43,7 @@ class ChooseGroup extends React.Component {
             <Link key={group.id} to={`/profile/${group.group_name}`}>
               <div className="group" onClick={() => this.handleClick(group)}>
                 <h3>{group.group_name}</h3>
-                <h5>{this.calculateTimeLeft(group.date_created)} days left</h5>
+                <h5><Graph days={this.calculateTimeLeft(group.date_created)}/> days left</h5>
               </div>
             </Link>
           );
