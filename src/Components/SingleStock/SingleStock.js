@@ -35,12 +35,14 @@ class SingleStock extends React.Component {
        })
   }
 
+
   quantityInput = async e => {
     await this.setState({quantity: e.target.value})
   }
 
   handleBuy = async e => {
     e.preventDefault()
+
     const stock = this.state.stock
     const quantity = this.state.quantity
     const groupid = this.context.selectedGroup.id
@@ -48,25 +50,33 @@ class SingleStock extends React.Component {
 
     await this.setState({totalCost: totalCost})
 
-    this.handleAvailableBalance()
-    
     const filterQuote = this.state.userStocks.filter(data => data.stock_symbol === stock)
-    console.log(filterQuote)
-    if (filterQuote.length < 1) {
+
+    if (filterQuote.length === 0) {
       equityService.buyStock(stock, quantity, groupid)
-      .then(data => data)
     } else {
       const filteredQuoteId = filterQuote[0].id
       const filteredQuoteNum = parseInt(filterQuote[0].num_of_shares) + parseInt(this.state.quantity)
       equityService.updateStockEquity(filteredQuoteId, filteredQuoteNum)
+
+      this.updateUserStocks(filteredQuoteId, filteredQuoteNum)
     }
 
-
-    
+    this.handleAvailableBalance()
   }
 
+  updateUserStocks = async (id, num) => {
+    const groupid = this.context.selectedGroup.groupid
+    await equityService.getEquity(groupid)
+      .then(userStocks => {
+        this.setState({userStocks})
+       })
+  }
+
+
   handleAvailableBalance = () =>{
-    let leftBalance = this.context.selectedGroup.cash_balance - this.state.totalCost
+    let leftBalance = this.context.updateBalance.cash_balance - this.state.totalCost
+    console.log(this.context.updateBalance.cash_balance, this.state.totalCost,  leftBalance)
 
     this.setState({availableBalance: leftBalance})
 
@@ -75,7 +85,7 @@ class SingleStock extends React.Component {
   }
 
   render(){
-    console.log(this.context.updatedBalance)
+    console.log(this.state.userStocks)
     
     return (
       <>
@@ -115,20 +125,13 @@ class SingleStock extends React.Component {
               </div>
             </section>
             <form className="buy-form" onSubmit={(e) => this.handleBuy(e)}>
-              <p>Avaiable Balance: {this.context.updatedBalance.cash_balance}</p>
+              <p>Avaiable Balance: {this.context.updateBalance.cash_balance}</p>
               <div>
                 <lable>Quantity</lable>
                 <input value={this.state.quantity} className="Quantity-input" onChange={(e) => this.quantityInput(e)}/>
               </div>
               <button className="single-stock-buy-button" type="submit">Buy</button>
             </form>
-            {/* <form className="sell-form" onSubmit={(e) => this.handleBuy(e)}>
-              <div>
-                <lable>Quantity</lable>
-                <input value={this.state.quantity} className="Quantity-input" onChange={(e) => this.quantityInput(e)}/>
-              </div>
-              <button className="single-stock-sell-button" type="submit">Sell</button>
-            </form> */}
             
           </div>
             <div className="news"></div>
