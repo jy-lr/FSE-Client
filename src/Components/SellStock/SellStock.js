@@ -48,6 +48,11 @@ class SellStock extends React.Component{
        let newBalance = this.context.selectedGroup.cash_balance + cashValue
        this.context.updateSelectedGroupData(newBalance)
        equityService.deleteEquity(userStocks[i].id)
+       .then(() => {
+        const {location, history} = this.props
+        const destination = (location.state || {}).from || `/sell`
+        history.push(destination)
+       })
    }
    render(){
        return (

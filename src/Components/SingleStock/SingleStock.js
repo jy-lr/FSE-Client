@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './SingleStock.css'
 import Nav from '../Nav/Nav';
 import config from '../../config'
@@ -7,6 +8,13 @@ import Context from '../Context/Context'
 
 class SingleStock extends React.Component {
   static contextType = Context
+
+  static defaultProps = {
+    location: {},
+    history: {
+      push: () => {},
+    },
+  }
 
   constructor(props) {
     super(props)
@@ -74,7 +82,7 @@ class SingleStock extends React.Component {
   }
 
 
-  handleAvailableBalance = () =>{
+  handleAvailableBalance = (resolve) =>{
     let leftBalance = this.context.updateBalance.cash_balance - this.state.totalCost
     console.log(this.context.updateBalance.cash_balance, this.state.totalCost,  leftBalance)
 
@@ -91,6 +99,7 @@ class SingleStock extends React.Component {
       <>
         <Nav />
         <div className="singlestock">
+          <Link to={this.state.userStocks[0] ? `/profile/${this.state.userStocks[0].groupid}`: '/groups'}><button>Back</button></Link>
           <h2>{this.state.stockData.companyName}</h2>
           <div className="graph-holder"></div>
           <div key={this.state.stockData.symbol} className="stock-info">
