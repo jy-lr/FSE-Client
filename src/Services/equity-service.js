@@ -7,7 +7,7 @@ const equityService = {
       num_of_shares: num_of_shares,
       groupid: groupid
     }
-    return fetch(`http://localhost:8000/api/equity`, {
+    return fetch(`https://stark-falls-29621.herokuapp.com/api/equity`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -21,7 +21,7 @@ const equityService = {
           res.json())
       },
   getEquity(groupid) {
-    return fetch(`http://localhost:8000/api/equity/${groupid}`, {
+    return fetch(`https://stark-falls-29621.herokuapp.com/api/equity/${groupid}`, {
       headers: {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       },
@@ -32,7 +32,7 @@ const equityService = {
       res.json())
     },
     getAllEquity(groupid){
-      return fetch(`http://localhost:8000/api/equity?groupid=${groupid}`, {
+      return fetch(`https://stark-falls-29621.herokuapp.com/api/equity?groupid=${groupid}`, {
         headers: {
           'Authorization': `bearer ${TokenService.getAuthToken()}`
         },
@@ -43,7 +43,7 @@ const equityService = {
         res.json())
     },
     deleteEquity(id) {
-      return fetch(`http://localhost:8000/api/equity`, {
+      return fetch(`https://stark-falls-29621.herokuapp.com/api/equity`, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json',
@@ -52,7 +52,7 @@ const equityService = {
         body: JSON.stringify({id: id})
       })},
   updateStockEquity(id, num_of_shares) {
-    return fetch(`http://localhost:8000/api/equity`, {
+    return fetch(`https://stark-falls-29621.herokuapp.com/api/equity`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',

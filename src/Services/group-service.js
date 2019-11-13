@@ -2,7 +2,7 @@ import TokenService from './token-service';
 
 const groupService = {
     createGroup(group_name) {
-        return fetch('http://localhost:8000/api/group', {
+        return fetch('https://stark-falls-29621.herokuapp.com/api/group', {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
@@ -16,7 +16,7 @@ const groupService = {
             res.json())
       },
       getGroupId(id) {
-        return fetch(`http://localhost:8000/api/group/${id}`, {
+        return fetch(`https://stark-falls-29621.herokuapp.com/api/group/${id}`, {
           headers: {
             'Authorization': `bearer ${TokenService.getAuthToken()}`
           },
