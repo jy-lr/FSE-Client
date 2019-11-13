@@ -12,8 +12,7 @@ class Profile extends React.Component {
    userStocks: [],
    currentStockData: []
  }
- componentWillMount = () => {
-   console.log(this.context.selectedGroup)
+ componentDidMount = () => {
    const groupid = this.context.selectedGroup.groupid
    equityService.getEquity(groupid)
      .then(userStocks => {
@@ -59,7 +58,11 @@ class Profile extends React.Component {
          <div className="profile">
              <h1>Equity: ${this.state.equity}</h1>
              <div className="graph-holder"></div>
-             <Link to="/buy"><button>Search</button></Link>
+             <div className="links">
+              <Link to="/buy"><button>Search</button></Link>
+              <Link to="/rankings"><button>Rankings</button></Link>
+              <Link to="/sell"><button>Sell</button></Link>
+             </div>
              <div className="stocks">
                {this.state.userStocks.map(stock => {
                  return (

@@ -6,6 +6,7 @@ const groupService = {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
+            'Authorization': `bearer ${TokenService.getAuthToken()}`
           },
           body: JSON.stringify(group_name),
         })

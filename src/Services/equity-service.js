@@ -31,20 +31,26 @@ const equityService = {
       res.json().then(e => Promise.reject(e)):
       res.json())
     },
-  deleteEquity(id) {
-    return fetch(`http://localhost:8000/api/equity`, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': `bearer ${TokenService.getAuthToken()}`,
-      },
-      body: JSON.stringify({id: id})
-    })
-    .then(res => 
-      (!res.ok)?
-      res.json().then(e => Promise.reject(e)):
-      res.json())
+    getAllEquity(groupid){
+      return fetch(`http://localhost:8000/api/equity?groupid=${groupid}`, {
+        headers: {
+          'Authorization': `bearer ${TokenService.getAuthToken()}`
+        },
+      })
+      .then(res => 
+        (!res.ok)?
+        res.json().then(e => Promise.reject(e)):
+        res.json())
     },
+    deleteEquity(id) {
+      return fetch(`http://localhost:8000/api/equity`, {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json',
+          'Authorization': `bearer ${TokenService.getAuthToken()}`,
+        },
+        body: JSON.stringify({id: id})
+      })},
   updateStockEquity(id, num_of_shares) {
     return fetch(`http://localhost:8000/api/equity`, {
       method: 'PATCH',
