@@ -125,9 +125,9 @@ class SingleStock extends React.Component {
               </div>
             </section>
             <form className="buy-form" onSubmit={(e) => this.handleBuy(e)}>
-              <p>Avaiable Balance: {this.context.updateBalance.cash_balance}</p>
+              <p>Available Balance: {this.context.updateBalance.cash_balance}</p>
               <div>
-                <lable>Quantity</lable>
+                <label>Quantity</label>
                 <input value={this.state.quantity} className="Quantity-input" onChange={(e) => this.quantityInput(e)}/>
               </div>
               <button className="single-stock-buy-button" type="submit">Buy</button>
