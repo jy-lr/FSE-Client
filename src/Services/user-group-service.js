@@ -49,11 +49,7 @@ const userGroupService = {
             cash_balance: cash_balance
           })
         })
-          .then(res => {
-            (!res.ok)
-              ? res.json().then(e => Promise.reject(e))
-              : res.json()
-          })
+          .then(res => res.json())
       }
 }
 

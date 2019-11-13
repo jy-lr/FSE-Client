@@ -17,7 +17,7 @@ import SellStock from './Components/SellStock/SellStock';
 import userGroupService from './Services/user-group-service'
 
 class App extends React.Component {
-  context 
+   
 
   constructor(props) {
     super(props)
@@ -28,28 +28,35 @@ class App extends React.Component {
   }
 
   saveSelectedGroupData = (selectedGroupData) => {
-    this.setState({selectedGroup: selectedGroupData})
-    this.setState({updateBalanceGroup: selectedGroupData})
-  }
-
-  updateSelectedGroupData = async updatedBalance => {
-    console.log(this.state.updateBalanceGroup)
-    await this.setState(prevState => {
-      let updateBalanceGroup = Object.assign({}, prevState.updateBalanceGroup)
-      updateBalanceGroup.cash_balance = updatedBalance
-      return {updateBalanceGroup}
+    this.setState({
+      selectedGroup: selectedGroupData,
+      updateBalanceGroup: selectedGroupData
     })
 
-    const id = parseInt(this.state.updateBalanceGroup.id)
-    const cashBalance = parseInt(this.state.updateBalanceGroup.cash_balance)
+  }
 
-    console.log(id, cashBalance)
+  updateSelectedGroupData = updatedBalance => {
+    const id = parseInt(this.state.updateBalanceGroup.id)
+    const cashBalance = parseInt(updatedBalance)
 
     userGroupService.updateCashBalance(id, cashBalance)
+      .then(data => data)
 
-
-
+      console.log(this.state.updateBalanceGroup)
+      
+    this.setState(prevState => {
+      let updateBalanceGroup = Object.assign({}, prevState.updateBalanceGroup)
+      updateBalanceGroup.cash_balance = cashBalance
+      return {updateBalanceGroup}
+    })
+    
   }
+
+  updateSelectedGroupData() {
+    userGroupService.getAllofUsersGroups()
+    .then(userGroups => console.log(userGroups))
+  }
+
 
 
   render () {
@@ -58,7 +65,7 @@ class App extends React.Component {
       saveSelectedGroupData: this.saveSelectedGroupData,
       selectedGroup: this.state.selectedGroup,
       updateSelectedGroupData: this.updateSelectedGroupData,
-      updatedBalance: this.state.updateBalanceGroup,
+      updateBalanceGroup: this.state.updateBalanceGroup,
     }
 
     return (
