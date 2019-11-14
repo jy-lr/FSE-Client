@@ -15,6 +15,7 @@ import Context from './Components/Context/Context';
 import BuyStock from './Components/BuyStock/BuyStock';
 import SellStock from './Components/SellStock/SellStock';
 import userGroupService from './Services/user-group-service'
+import Graph from './Components/Graph/daysLeftGraph'
 
 class App extends React.Component {
    
@@ -59,6 +60,7 @@ class App extends React.Component {
 
 
 
+
   render () {
 
     const contextValue = {
@@ -82,6 +84,7 @@ class App extends React.Component {
             <Route exact path={"/buy"} component={() => <BuyStock />}/>
             <Route exact path={"/sell"} component={() => <SellStock />}/>
             <Route exact path={"/register"} component={Register}/>
+            <Route exact path='/graph' component={Graph}/>
           </Switch>
         </Context.Provider>
       </main>
