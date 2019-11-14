@@ -1,6 +1,6 @@
 export default {
-    API_ENDPOINT: 'https://stark-falls-29621.herokuapp.com/api',
+    API_ENDPOINT: 'http://localhost:8000',
     TOKEN_KEY: 'fse-auth-token',
     STOCK_TOKEN: 'Tpk_8d02cb5986fb405bad198d090b3ac15a',
-    DEMO_TOKEN_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE1NzM2OTI4ODEsInN1YiI6InRlc3QxIn0.PMpTaLvb8ZgJIK_xq4viCJpRF3h2hsJzYpxD5TO4FcI'
+    DEMO_TOKEN_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE1NzM2NTYzMDUsInN1YiI6ImEifQ.T-GFYXw18TqB72gIkm6eno3YF9V5-8eVMmSJBEaYigI'
 }
