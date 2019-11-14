@@ -52,7 +52,7 @@ class LinearChart extends React.Component {
       let day = date.getDate()
       let hour = date.getHours()
       let min = date.getMinutes()
-      let combine = `${month}/${day}`
+      let combine = `${month}/${day}h${hour}m${min}`
       let newData = {x: combine, y: storedData.equity}
       return newData
     })
@@ -60,10 +60,7 @@ class LinearChart extends React.Component {
   }
 
   render() {
-    const componentStyle = {
-      stroke: "#c43a31",
 
-    }
     return (
       <div className='testing'>
         <InterpolationSelect
