@@ -2,7 +2,7 @@ import TokenServices from './TokenService'
 
 const userservice = {
   postLogin(user_name, password) {
-    return fetch('http://localhost:8000/api/login', {
+    return fetch('https://stark-falls-29621.herokuapp.com/api/login', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -15,7 +15,7 @@ const userservice = {
         res.json())
   },
   registerUser(full_name, user_name, password) {
-    return fetch('http://localhost:8000/api/user', {
+    return fetch('https://stark-falls-29621.herokuapp.com/api/user', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -28,7 +28,7 @@ const userservice = {
         res.json())
   },
   createGroup(group_name) {
-    return fetch('http://localhost:8000/api/group', {
+    return fetch('https://stark-falls-29621.herokuapp.com/api/group', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -41,7 +41,7 @@ const userservice = {
         res.json())
   },
   getGroupId(id) {
-    return fetch(`http://localhost:8000/api/group/${id}`, {
+    return fetch(`https://stark-falls-29621.herokuapp.com/api/group/${id}`, {
       headers: {
         'Authorization': `bearer ${TokenServices.getAuthToken()}`
       },
@@ -52,7 +52,7 @@ const userservice = {
         res.json())
   },
   buyStock(stock_symbol, num_of_shares, groupid) {
-    return fetch(`http://localhost:8000/api/equity`, {
+    return fetch(`https://stark-falls-29621.herokuapp.com/api/equity`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -65,7 +65,7 @@ const userservice = {
         res.json())
   },
   getEquity(groupid) {
-    return fetch(`http://localhost:8000/api/equity/${groupid}`, {
+    return fetch(`https://stark-falls-29621.herokuapp.com/api/equity/${groupid}`, {
       headers: {
         'Authorization': `bearer ${TokenServices.getAuthToken()}`
       },
@@ -76,7 +76,7 @@ const userservice = {
         res.json())
   },
   addUserToGroup(userid, groupid, cash_balance) {
-    return fetch(`http://localhost:8000/api/usergroup`, {
+    return fetch(`https://stark-falls-29621.herokuapp.com/api/usergroup`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -90,7 +90,7 @@ const userservice = {
   },
   getAllofUsersGroups() {
     const token = TokenServices.getAuthToken()
-    return fetch('http://localhost:8000/api/usergroup', {
+    return fetch('https://stark-falls-29621.herokuapp.com/api/usergroup', {
       headers: {
         'Authorization': `bearer ${token}`
       }
@@ -101,7 +101,7 @@ const userservice = {
         res.json())
   },
   getAllofGroupsUsers(groupid) {
-    return fetch(`http://localhost:8000/api/usergroup/${groupid}`, {
+    return fetch(`https://stark-falls-29621.herokuapp.com/api/usergroup/${groupid}`, {
       headers: {
         'Authorization': `bearer ${TokenServices.getAuthToken()}`
       }
@@ -112,7 +112,7 @@ const userservice = {
         res.json())
   },
   getAllUsers() {
-    return fetch(`http://localhost:8000/api/user`, {
+    return fetch(`https://stark-falls-29621.herokuapp.com/api/user`, {
       headers: {
         'Authorization': `bearer ${TokenServices.getAuthToken()}`
       }

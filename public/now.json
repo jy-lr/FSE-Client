@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "alias": "Fantasy-Stock-Exchange",
+  "name": "Fantasy-Stock-Exchange",
+  "routes": [
+    {
+      "src": "^/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": ".*",
+      "dest": "/index.html"
+    }
+  ]
+}

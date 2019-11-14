@@ -2,7 +2,7 @@ import TokenService from './token-service';
 
 const userService = {
   postLogin(user_name, password) {
-    return fetch('http://localhost:8000/api/login', {
+    return fetch('https://stark-falls-29621.herokuapp.com/api/login', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -15,7 +15,7 @@ const userService = {
         res.json())
   },
   registerUser(full_name, user_name, password) {
-    return fetch('http://localhost:8000/api/user', {
+    return fetch('https://stark-falls-29621.herokuapp.com/api/user', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -28,7 +28,7 @@ const userService = {
         res.json())
   },
   getAllUsers() {
-    return fetch(`http://localhost:8000/api/user`, {
+    return fetch(`https://stark-falls-29621.herokuapp.com/api/user`, {
       headers: {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       }

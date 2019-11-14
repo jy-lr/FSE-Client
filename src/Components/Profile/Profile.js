@@ -28,7 +28,7 @@ class Profile extends React.Component {
    const userStocks = this.state.userStocks;
    const currentStockData = this.state.currentStockData;
    let currentTotal = 0;
-   if(currentStockData[0]){
+   if(currentStockData){
      for(let i = 0; i < userStocks.length; i++){
        currentTotal += (userStocks[i].num_of_shares * currentStockData[(userStocks[i].stock_symbol).toUpperCase()].quote.latestPrice)
      }
@@ -51,12 +51,12 @@ class Profile extends React.Component {
    return fetch(`https://sandbox.iexapis.com/stable/stock/market/batch?symbols=${query}&types=quote&token=Tpk_8d02cb5986fb405bad198d090b3ac15a`)
  }
  render(){
-   console.log(this.state.userStocks)
+   const totalEquity = parseInt(this.context.updateBalance.cash_balance) + parseInt(this.state.equity)
      return (
        <>
          <Nav />
          <div className="profile">
-             <h1>Equity: ${this.state.equity}</h1>
+             <h1>Equity: ${totalEquity}</h1>
              <div className="graph-holder"></div>
              <div className="links">
               <Link to="/buy"><button>Search</button></Link>

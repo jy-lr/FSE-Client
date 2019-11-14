@@ -4,15 +4,20 @@ import './ChooseGroup.css';
 import Nav from '../Nav/Nav';
 import userGroupService from '../../Services/user-group-service';
 import Context from '../Context/Context';
+import Graph from '../Graph/daysLeftGraph'
 
 //api get usergroup
 
 class ChooseGroup extends React.Component {
   static contextType = Context
 
-  state = {
-    userGroups: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      userGroups: []
+    }
   }
+
 
   componentDidMount = () => {
     userGroupService.getAllofUsersGroups()
@@ -28,8 +33,15 @@ class ChooseGroup extends React.Component {
     endDate.setDate(endDate.getDate() + 30)
     let now = new Date()
     const diffTime = Math.abs(endDate - now);
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
-    return diffDays
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    console.log(diffDays)
+    return (
+      
+      <h5>
+        <Graph days={diffDays}/>
+      </h5>
+      
+    )
   }
 
   render(){
@@ -42,7 +54,7 @@ class ChooseGroup extends React.Component {
             <Link key={group.id} to={`/profile/${group.group_name}`}>
               <div className="group" onClick={() => this.handleClick(group)}>
                 <h3>{group.group_name}</h3>
-                <h5>{this.calculateTimeLeft(group.date_created)} days left</h5>
+                {this.calculateTimeLeft(group.date_created)}
               </div>
             </Link>
           );
