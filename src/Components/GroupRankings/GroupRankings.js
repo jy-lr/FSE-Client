@@ -10,7 +10,7 @@ class GroupRankings extends React.Component {
     static contextType = Context;
     
     state = {
-        group: [{date_create: 0}],
+        group: [],
         timeRemaining: 15,
         currentStockData: {},
         equity: []
@@ -91,6 +91,7 @@ class GroupRankings extends React.Component {
       }
 
     render(){
+        console.log(this.state.group)
         return (
             <>
             <Nav />
