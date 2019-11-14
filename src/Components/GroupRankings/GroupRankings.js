@@ -31,7 +31,7 @@ class GroupRankings extends React.Component {
         let users = this.state.group;
         for(let i = 0;i < users.length; i++){
             let stocks = this.state.equity;
-            let userStocks = stocks.filter(equity => equity.userid === users[i].id)
+            let userStocks = stocks.filter(equity => equity.userid === users[i].userid)
             console.log(userStocks)
             let equity = this.calculateCurrentEquity(userStocks)
             users[i].equity = equity
@@ -65,9 +65,9 @@ class GroupRankings extends React.Component {
         for(let i = 0;i < users.length; i++){
             for(let j = 0; j < userStocks.length; j++){
                 if(i !== userStocks.length - 1){
-                  queryPart = `${userStocks[j].stock_symbol}`;
-                } else {
                   queryPart = `${userStocks[j].stock_symbol},`;
+                } else {
+                  queryPart = `${userStocks[j].stock_symbol}`;
                 }
                 query += queryPart;
             }

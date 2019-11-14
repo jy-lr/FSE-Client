@@ -53,8 +53,8 @@ class SingleStock extends React.Component {
 
     const stock = this.state.stock
     const quantity = this.state.quantity
-    const groupid = this.context.selectedGroup.id
-    let totalCost = quantity*this.state.stockData.iexRealtimePrice
+    const groupid = this.context.selectedGroup.groupid
+    let totalCost = quantity*this.state.stockData.latestPrice
 
     await this.setState({totalCost: totalCost})
 
@@ -82,7 +82,7 @@ class SingleStock extends React.Component {
   }
 
 
-  handleAvailableBalance = (resolve) =>{
+  handleAvailableBalance = () =>{
     let leftBalance = this.context.updateBalance.cash_balance - this.state.totalCost
     console.log(this.context.updateBalance.cash_balance, this.state.totalCost,  leftBalance)
 
@@ -110,7 +110,7 @@ class SingleStock extends React.Component {
               </div>
               <div>
                 <p>Price</p>
-                <p>{this.state.stockData.iexRealtimePrice}</p>
+                <p>{this.state.stockData.latestPrice}</p>
               </div>
               <div>
                 <p>Open Price</p>

@@ -1,8 +1,9 @@
 import TokenService from './token-service';
+import config from '../config';
 
 const userGroupService = {
     getAllofUsersGroups() {
-        return fetch('http://localhost:8000/api/usergroup', {
+        return fetch(`${config.API_ENDPOINT}/api/usergroup`, {
           headers: {
             'Authorization': `bearer ${TokenService.getAuthToken()}`
           }
@@ -13,7 +14,7 @@ const userGroupService = {
             res.json())
       },
       getAllofGroupsUsers(groupid) {
-        return fetch(`http://localhost:8000/api/usergroup/${groupid}`, {
+        return fetch(`${config.API_ENDPOINT}/api/usergroup/${groupid}`, {
           headers: {
             'Authorization': `bearer ${TokenService.getAuthToken()}`
           }
@@ -24,7 +25,7 @@ const userGroupService = {
             res.json())
       },
       addUserToGroup(userid, groupid, cash_balance) {
-        return fetch(`http://localhost:8000/api/usergroup`, {
+        return fetch(`${config.API_ENDPOINT}/api/usergroup`, {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
@@ -38,7 +39,7 @@ const userGroupService = {
             res.json())
       },
       updateCashBalance(id, cash_balance) {
-        return fetch(`http://localhost:8000/api/usergroup`, {
+        return fetch(`${config.API_ENDPOINT}/api/usergroup`, {
           method: 'PATCH',
           headers: {
             'content-type': 'application/json',

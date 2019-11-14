@@ -28,7 +28,7 @@ class Profile extends React.Component {
    const userStocks = this.state.userStocks;
    const currentStockData = this.state.currentStockData;
    let currentTotal = 0;
-   if(currentStockData[0]){
+   if(currentStockData){
      for(let i = 0; i < userStocks.length; i++){
        currentTotal += (userStocks[i].num_of_shares * currentStockData[(userStocks[i].stock_symbol).toUpperCase()].quote.latestPrice)
      }

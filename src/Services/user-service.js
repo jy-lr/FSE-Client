@@ -1,8 +1,9 @@
 import TokenService from './token-service';
+import config from '../config';
 
 const userService = {
   postLogin(user_name, password) {
-    return fetch('http://localhost:8000/api/login', {
+    return fetch(`${config.API_ENDPOINT}/api/login`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -15,7 +16,7 @@ const userService = {
         res.json())
   },
   registerUser(full_name, user_name, password) {
-    return fetch('http://localhost:8000/api/user', {
+    return fetch(`${config.API_ENDPOINT}/api/user`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -28,7 +29,7 @@ const userService = {
         res.json())
   },
   getAllUsers() {
-    return fetch(`http://localhost:8000/api/user`, {
+    return fetch(`${config.API_ENDPOINT}/api/user`, {
       headers: {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       }

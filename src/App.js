@@ -36,9 +36,10 @@ class App extends React.Component {
   }
 
   updateSelectedGroupData = updatedBalance => {
-    const id = parseInt(this.state.updateBalanceGroup.id)
+    console.log(this.state.updateBalanceGroup)
+    const id = parseInt(this.state.selectedGroup.id)
     const cashBalance = parseInt(updatedBalance)
-
+    console.log(id, cashBalance)
     userGroupService.updateCashBalance(id, cashBalance)
       .then(data => data)
 

@@ -1,4 +1,5 @@
 import TokenService from './token-service';
+import config from '../config';
 
 const equityService = {
   buyStock(stock_symbol, num_of_shares, groupid) {
@@ -7,7 +8,7 @@ const equityService = {
       num_of_shares: num_of_shares,
       groupid: groupid
     }
-    return fetch(`http://localhost:8000/api/equity`, {
+    return fetch(`${config.API_ENDPOINT}/api/equity`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -21,7 +22,7 @@ const equityService = {
           res.json())
       },
   getEquity(groupid) {
-    return fetch(`http://localhost:8000/api/equity/${groupid}`, {
+    return fetch(`${config.API_ENDPOINT}/api/equity/${groupid}`, {
       headers: {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       },
@@ -32,7 +33,7 @@ const equityService = {
       res.json())
     },
     getAllEquity(groupid){
-      return fetch(`http://localhost:8000/api/equity?groupid=${groupid}`, {
+      return fetch(`${config.API_ENDPOINT}/api/equity?groupid=${groupid}`, {
         headers: {
           'Authorization': `bearer ${TokenService.getAuthToken()}`
         },
@@ -43,7 +44,7 @@ const equityService = {
         res.json())
     },
     deleteEquity(id) {
-      return fetch(`http://localhost:8000/api/equity`, {
+      return fetch(`${config.API_ENDPOINT}/api/equity`, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json',
@@ -52,7 +53,7 @@ const equityService = {
         body: JSON.stringify({id: id})
       })},
   updateStockEquity(id, num_of_shares) {
-    return fetch(`http://localhost:8000/api/equity`, {
+    return fetch(`${config.API_ENDPOINT}/api/equity`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
