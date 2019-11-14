@@ -10,7 +10,7 @@ class GroupRankings extends React.Component {
     static contextType = Context;
     
     state = {
-        group: [],
+        group: [{date_create: 0}],
         timeRemaining: 15,
         currentStockData: {},
         equity: []
