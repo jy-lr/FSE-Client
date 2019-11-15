@@ -15,7 +15,7 @@ import Context from './Components/Context/Context';
 import BuyStock from './Components/BuyStock/BuyStock';
 import SellStock from './Components/SellStock/SellStock';
 import userGroupService from './Services/user-group-service'
-import Graph from './Components/Graph/daysLeftGraph'
+import Graph from './Components/Graph/linearGraph'
 
 class App extends React.Component {
    

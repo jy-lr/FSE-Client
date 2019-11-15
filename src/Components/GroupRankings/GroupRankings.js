@@ -32,7 +32,7 @@ class GroupRankings extends React.Component {
         let users = this.state.group;
         for(let i = 0;i < users.length; i++){
             let stocks = this.state.equity;
-            let userStocks = stocks.filter(equity => equity.userid === users[i].userid)
+            let userStocks = stocks.filter(equity => equity.userid === users[i].id)
             console.log(userStocks)
             let equity = this.calculateCurrentEquity(userStocks)
             users[i].equity = equity
