@@ -32,7 +32,7 @@ label {
     color: #707070;
 }
 
-.stock-holder {
+.sstock-holder {
     display: flex;
     justify-content: space-between;
     background: #868686;

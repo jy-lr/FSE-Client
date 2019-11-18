@@ -30,7 +30,6 @@ class Graph extends React.Component {
   }
 
   render() {
-    console.log(this.props.days)
     return (
       <div>
         <svg viewBox="0 0 400 400" width="10rem" height="10rem">

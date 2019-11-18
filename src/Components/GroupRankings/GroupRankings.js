@@ -4,13 +4,12 @@ import Nav from '../Nav/Nav';
 import Context from '../Context/Context';
 import userGroupService from '../../Services/user-group-service';
 import equityService from '../../Services/equity-service';
-import Graph from '../Graph/daysLeftGraph'
 
 class GroupRankings extends React.Component {
     static contextType = Context;
     
     state = {
-        group: [{date_create: 0}],
+        group: [],
         timeRemaining: 15,
         currentStockData: {},
         equity: []
@@ -32,10 +31,11 @@ class GroupRankings extends React.Component {
         let users = this.state.group;
         for(let i = 0;i < users.length; i++){
             let stocks = this.state.equity;
-            let userStocks = stocks.filter(equity => equity.userid === users[i].id)
+            let userStocks = stocks.filter(equity => equity.userid === users[i].userid)
             console.log(userStocks)
             let equity = this.calculateCurrentEquity(userStocks)
-            users[i].equity = equity
+            console.log(equity)
+            users[i].equity = equity + users[i].cash_balance
             console.log(users)
         }
 
@@ -64,11 +64,11 @@ class GroupRankings extends React.Component {
         let users = this.state.group;
 
         for(let i = 0;i < users.length; i++){
-            for(let j = 0; j < userStocks.length; j++){
+            for(let i = 0; i < userStocks.length; i++){
                 if(i !== userStocks.length - 1){
-                  queryPart = `${userStocks[j].stock_symbol},`;
+                  queryPart = `${userStocks[i].stock_symbol},`;
                 } else {
-                  queryPart = `${userStocks[j].stock_symbol}`;
+                  queryPart = `${userStocks[i].stock_symbol},`;
                 }
                 query += queryPart;
             }
