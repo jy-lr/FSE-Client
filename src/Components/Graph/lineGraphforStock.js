@@ -2,7 +2,6 @@ import React from 'react';
 import {VictoryChart, VictoryLine, VictoryScatter} from 'victory'
 import './linearGraph.css'
 
-
 const cartesianInterpolations = [
   "basis",
   "bundle",
@@ -26,7 +25,7 @@ const InterpolationSelect = ({ currentValue, values, onChange }) => (
   </select>
 );
 
-class LinearChart extends React.Component {
+class stockChart extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -38,34 +37,23 @@ class LinearChart extends React.Component {
 
 
   graphData() {
+    console.log(this.props.stockData)
 
-    const data = this.props.data.map(storedData => {
-      let date = new Date(storedData.date_created)
-      let month = date.getMonth() + 1
-      let day = date.getDate()
-      let hour = date.getHours()
-      let min = date.getMinutes()
-      let combine = `${month}/${day}h${hour}`
-      let newData = {x: combine, y: storedData.equity}
-      return newData
-    })
+    console.log(this.props.stockData !== undefined)
 
-    // const data = [
-    //   {x: 1, y: 5},
-    //   {x: 2, y: 6},
-    //   {x: null, y: null},
-    //   {x: 3, y: 9}
-    // ]
-    return data
+    if (this.props.stockData !== undefined) {
+      return this.props.stockData.map(data => {
+        const date = data.date
+        const close = data.close
+        const newVal = {
+          x: date,
+          y: close
+        }
+        return newVal
+      })
+    }
+    return [{x: 0, y:0}]
   }
-
-// {group by date_trunc('hour', created)
-
-// where created > given_date
-
-// and created < given_date}
-
-// {date_trunc('hour', interval '2 hours 30 minutes')}
 
   render() {
 
@@ -92,4 +80,4 @@ class LinearChart extends React.Component {
   }
 }
 
-export default LinearChart
+export default stockChart

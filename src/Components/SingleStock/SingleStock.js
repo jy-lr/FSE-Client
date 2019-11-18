@@ -5,6 +5,7 @@ import Nav from '../Nav/Nav';
 import config from '../../config'
 import equityService from '../../Services/equity-service'
 import Context from '../Context/Context'
+import StockChart from '../Graph/lineGraphforStock'
 
 class SingleStock extends React.Component {
   static contextType = Context
@@ -36,11 +37,16 @@ class SingleStock extends React.Component {
   }
 
   componentWillMount = () => {
+    let stockQuote = this.state.stock
     const groupid = this.context.selectedGroup.groupid
     equityService.getEquity(groupid)
       .then(userStocks => {
         this.setState({userStocks})
        })
+
+    fetch(`https://sandbox.iexapis.com/stable/stock/${stockQuote}/chart/5d?token=${config.STOCK_TOKEN}`)
+       .then(res => res.json())
+       .then(data => this.setState({graphData: data}))
   }
 
 
@@ -84,8 +90,6 @@ class SingleStock extends React.Component {
 
   handleAvailableBalance = () =>{
     let leftBalance = this.context.updateBalance.cash_balance - this.state.totalCost
-    console.log(this.context.updateBalance.cash_balance, this.state.totalCost,  leftBalance)
-
     this.setState({availableBalance: leftBalance})
 
     this.context.updateSelectedGroupData(this.state.availableBalance)
@@ -101,7 +105,7 @@ class SingleStock extends React.Component {
         <div className="singlestock">
           <Link to={this.state.userStocks[0] ? `/profile/${this.state.userStocks[0].groupid}`: '/groups'}><button>Back</button></Link>
           <h2>{this.state.stockData.companyName}</h2>
-          <div className="graph-holder"></div>
+          <StockChart stockData={this.state.graphData}/>
           <div key={this.state.stockData.symbol} className="stock-info">
             <section className="stock-info-container">
               <div>

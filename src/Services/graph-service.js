@@ -1,5 +1,9 @@
 import TokenService from './token-service';
+<<<<<<< HEAD
+import config from '../config'
+=======
 import config from '../config';
+>>>>>>> ef2e23db7cc9323fbd136f73f3463db874712994
 
 const userGraphService = {
   getGraphData(groupid) {
@@ -22,10 +26,25 @@ const userGraphService = {
       },
       body: JSON.stringify(graphData)
     })
-    .then(res =>         
+    .then(res =>
       (!res.ok)?
       res.json().then(e => Promise.reject(e)):
       res.json())
+  },
+  updateGraphData(patchGraphData) {
+    return fetch(`${config.API_ENDPOINT}/api/usergraph`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(patchGraphData)
+    })
+    .then(res => {
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
   }
 
 }
