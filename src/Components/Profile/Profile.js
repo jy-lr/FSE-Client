@@ -41,15 +41,90 @@ class Profile extends React.Component {
    let equity = Math.floor(currentTotal)
    const totalEquity = parseInt(this.context.updateBalance.cash_balance) + parseInt(equity)
 
-   const graphData = {
+   const groupGraphData = {
      groupid: this.context.selectedGroup.groupid,
      equity: totalEquity
    }
 
-   userGraphService.createGraphData(graphData)
-    .then(newGraphData => this.state.userGraphData.push(newGraphData))
-
    this.setState({totalEquity});
+
+   let date = new Date()
+   let month = date.getMonth()
+   let day = date.getDate()+1
+
+   const filteredGraphData = this.state.userGraphData.filter(graphData => {
+    let graphDate = new Date(graphData.date_created)
+    let dataMonth = graphDate.getMonth()
+    let dataDay = graphDate.getDate()
+
+    console.log(`${dataMonth}/${dataDay}`,`${month}/${day}`)
+    if(`${dataMonth}/${dataDay}`===`${month}/${day}`) {
+      return graphData
+    } 
+  })
+
+   if (this.state.userGraphData.length < 1) {
+    return userGraphService.createGraphData(groupGraphData)
+      .then(newGraphData => this.state.userGraphData.push(newGraphData))
+   }
+   console.log(filteredGraphData)
+
+   if (filteredGraphData.length >= 1) {
+
+      const patchGraphData = {
+        id: filteredGraphData[0].id,
+        equity: totalEquity,
+        groupid: parseInt(filteredGraphData[0].groupid)
+      }
+      console.log(patchGraphData)
+      return userGraphService.updateGraphData(patchGraphData)
+        .then(() => {
+          userGraphService.getGraphData(filteredGraphData[0].groupid)
+            .then(data => this.setState({userGraphData: data}))
+        })
+   } else {
+      userGraphService.createGraphData(groupGraphData)
+        .then(() => {
+          return userGraphService.getGraphData(filteredGraphData[0].groupid)
+            .then(data => this.setState({userGraphData: data}))
+        })
+   }
+
+
+  //  if (!!filteredGraphData) {
+  //     const patchGraphData = {
+  //       id: filteredGraphData.id,
+  //       equity: totalEquity,
+  //       groupid: filteredGraphData.groupid
+  //     }
+  //     return userGraphService.updateGraphData(patchGraphData)
+  //       .then(updatedGraphData => this.setState({userGraphData: updatedGraphData}))
+  //  }
+
+
+
+
+
+
+  //  this.state.userGraphData.map(graphData => {
+  //    let graphDate = new Date(graphData.date_created)
+  //    let dataMonth = graphDate.getMonth()
+  //    let dataDay = graphDate.getDate()
+
+  //   if (`${dataMonth}/${dataDay}`===`${month}/${day}` ) {
+  //     const patchGraphData = {
+  //      id: graphData.id,
+  //      equity: totalEquity
+  //     }
+  //     console.log(patchGraphData)
+  //     userGraphService.updateGraphData(patchGraphData)
+  //       .then(updatedGraphData => console.log(updatedGraphData))
+  //   } else {
+  //     userGraphService.createGraphData(groupGraphData)
+  //       .then(newGraphData => this.state.userGraphData.push(newGraphData))
+  //   }
+  //  })
+
  }
 
  getCurrentData(){

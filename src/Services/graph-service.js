@@ -1,8 +1,9 @@
 import TokenService from './token-service';
+import config from '../config'
 
 const userGraphService = {
   getGraphData(groupid) {
-    return fetch(`https://stark-falls-29621.herokuapp.com/api/usergraph/${groupid}`, {
+    return fetch(`${config.API_ENDPOINT}/api/usergraph/${groupid}`, {
       headers: {
         'Authorization': `bearer ${TokenService.getAuthToken()}`,
       },
@@ -13,7 +14,7 @@ const userGraphService = {
         res.json())
   },
   createGraphData(graphData) {
-    return fetch(`https://stark-falls-29621.herokuapp.com/api/usergraph`, {
+    return fetch(`${config.API_ENDPOINT}/api/usergraph`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -21,10 +22,25 @@ const userGraphService = {
       },
       body: JSON.stringify(graphData)
     })
-    .then(res =>         
+    .then(res =>
       (!res.ok)?
       res.json().then(e => Promise.reject(e)):
       res.json())
+  },
+  updateGraphData(patchGraphData) {
+    return fetch(`${config.API_ENDPOINT}/api/usergraph`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(patchGraphData)
+    })
+    .then(res => {
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
   }
 
 }
