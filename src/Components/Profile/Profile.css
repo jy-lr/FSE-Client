@@ -18,8 +18,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     background: grey;
-    height: 48px;
-    width: 100%;
+    padding: 16px;
 }
 
 .buy-holder {
