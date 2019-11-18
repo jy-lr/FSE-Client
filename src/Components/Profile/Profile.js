@@ -46,6 +46,13 @@ class Profile extends React.Component {
      equity: totalEquity
    }
 
+<<<<<<< HEAD
+=======
+   //if(the last graphdata.date_created - date.now() > 2day){
+   userGraphService.createGraphData(graphData)
+    .then(newGraphData => this.state.userGraphData.push(newGraphData))
+
+>>>>>>> ef2e23db7cc9323fbd136f73f3463db874712994
    this.setState({totalEquity});
 
    let date = new Date()
@@ -158,11 +165,9 @@ class Profile extends React.Component {
              <div className="stocks">
                {this.state.userStocks.map(stock => {
                  return (
-                   <Link key={stock.stock_symbol} to={`/stock/${stock.stock_symbol}`}>
-                     <div className="stock-holder">
+                   <Link className="stock-holder" key={stock.stock_symbol} to={`/stock/${stock.stock_symbol}`}>
                        <p>{stock.stock_symbol}</p>
                        <p>{stock.num_of_shares} shares</p>
-                     </div>
                    </Link>
                  );
                })}

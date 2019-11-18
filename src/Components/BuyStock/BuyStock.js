@@ -46,7 +46,7 @@ class BuyStock extends React.Component{
                 {this.state.searchResult.map(stock => {
                     return (
                         <div key={stock.symbol} className="stock"> 
-                            <div className="stock-holder">
+                            <div className="sstock-holder">
                                 <p>{stock.symbol}</p>
                                 <Link to={`/stock/${stock.symbol}`}><button type="submit" value={stock.symbol}>Review</button></Link>
                             </div>

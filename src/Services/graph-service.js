@@ -1,5 +1,9 @@
 import TokenService from './token-service';
+<<<<<<< HEAD
 import config from '../config'
+=======
+import config from '../config';
+>>>>>>> ef2e23db7cc9323fbd136f73f3463db874712994
 
 const userGraphService = {
   getGraphData(groupid) {
