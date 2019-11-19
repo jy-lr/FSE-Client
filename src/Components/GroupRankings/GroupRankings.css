@@ -14,8 +14,8 @@ h2, h3 {
 }
 
 p {
-    margin: 8px;
     color: white;
+    margin-top: 8px;
 }
 
 .members {

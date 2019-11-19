@@ -31,3 +31,76 @@ label {
     font-size: 20px;
     color: #707070;
 }
+
+.sell-results {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #343a42;
+    min-height: 800px;
+    flex-wrap: wrap;
+
+}
+
+.sell-button {
+    background-color: #ff2825;
+    color: white;
+}
+
+.sell-stock-info-container {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    margin-top: 3rem;
+    height: 13rem;
+    padding: 1rem;
+    border-radius: 15px;
+    flex-wrap: wrap;
+}
+
+.num-shares {
+    color: hsla(0,0%,100%,.6)
+
+}
+
+
+@media only screen and (max-width: 300px) and (min-width: 0px) {
+    .sell-results {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+
+      }
+      .sell-stock-info-container {
+          width: 50%;
+          flex-wrap: wrap;
+      }
+}
+@media only screen and (max-width: 600px) and (min-width: 301px) {
+    .sell-results {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
+
+    }
+    .sell-stock-info-container {
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 900px) and (min-width: 601px) {
+  
+}
+@media only screen and (max-width: 1200px) and (min-width: 901px) {
+
+}
+@media only screen and (max-width: 1700px) and (min-width: 1201px) {
+
+}
+@media only screen and (max-width:2200px) and (min-width: 1701px) {
+
+}
+@media only screen and (min-width: 2201px) {
+
+}

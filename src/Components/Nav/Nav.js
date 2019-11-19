@@ -23,13 +23,14 @@ class Nav extends React.Component {
   }
 
   handleClick = (group) => {
+    console.log(group)
     this.context.saveSelectedGroupData(group)
+    
   }
 
   
 
   calculateTimeLeft(group){
-    console.log(this.state.userGroups)
     let endDate = new Date(group.date_created)
     endDate.setDate(endDate.getDate() + 30)
     let now = new Date()
@@ -52,6 +53,7 @@ class Nav extends React.Component {
   }
 
     render(){
+      console.log(this.state.userGroups)
         return (
             <>
             <Menu>

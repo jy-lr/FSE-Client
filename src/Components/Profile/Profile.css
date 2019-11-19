@@ -30,12 +30,31 @@ h1 {
     background: lightgray;
 }
 
-p {
-    margin: 8px;
-    color: white;
-}
 
 .stocks {
     margin-top: 48px;
     width: 100%;
+}
+
+.profile-stock-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    background-color: #343a42;
+}
+
+.search-button {
+    background-color: #07b532;
+    color: white;
+}
+
+.ranking-button {
+    background-color: #ddad6b;
+    color: black;
+}
+
+.profile-equity {
+    color: #ddad6b;
 }

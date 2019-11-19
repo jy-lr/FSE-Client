@@ -3,6 +3,8 @@ import './SellStock.css';
 import Nav from '../Nav/Nav';
 import equityService from '../../Services/equity-service';
 import Context from '../Context/Context';
+import {Link} from 'react-router-dom';
+import config from '../../config'
 
 class SellStock extends React.Component{
    static contextType = Context
@@ -54,20 +56,20 @@ class SellStock extends React.Component{
         history.push(destination)
        })
    }
+
    render(){
        return (
            <>
            <Nav />
-           <div className="Results">
+           <div className="sell-results">
                {this.state.userStocks.map((stock, i) => {
                    return (
-                       <div key={stock.stock_symbol} className="stock">
-                           <div key={stock.stock_symbol} className="stock-holder">
-                               <p>{stock.stock_symbol}</p>
-                               <p>{stock.num_of_shares} Shares</p>
-                               <button value={i} onClick={e => this.handleSell(e)}>Sell</button>
-                           </div>
-                       </div>
+                        <div key={stock.stock_symbol} className="sell-stock-info-container">
+                            <Link to={`/stock/${stock.stock_symbol}`}></Link><h1 className="single-quote">${stock.stock_symbol}</h1>
+                            <p className="num-shares">Number of Shares:</p>
+                            <p>{stock.num_of_shares}</p>
+                            <button value={i} onClick={e => this.handleSell(e)} className="sell-button">Sell</button>
+                        </div>
                    )
                })}
            </div>

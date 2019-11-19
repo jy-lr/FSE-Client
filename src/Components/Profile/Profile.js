@@ -16,6 +16,7 @@ class Profile extends React.Component {
  }
  componentDidMount = () => {
    const groupid = this.context.selectedGroup.groupid
+   console.log(groupid)
    equityService.getEquity(groupid)
      .then(userStocks => {
        this.setState({userStocks})
@@ -85,7 +86,7 @@ class Profile extends React.Component {
    } else {
       userGraphService.createGraphData(groupGraphData)
         .then(() => {
-          return userGraphService.getGraphData(filteredGraphData[0].groupid)
+          return userGraphService.getGraphData(filteredGraphData[0].id)
             .then(data => this.setState({userGraphData: data}))
         })
    }
@@ -148,18 +149,19 @@ class Profile extends React.Component {
        <>
          <Nav />
          <div className="profile">
-             <h1>Equity: ${this.state.totalEquity}</h1>
+             <h1 className="profile-equity">Equity: ${this.state.totalEquity}</h1>
              <LinearChart data={this.state.userGraphData}/>
              <div className="links">
-              <Link to="/buy"><button>Search</button></Link>
-              <Link to="/rankings"><button>Rankings</button></Link>
-              <Link to="/sell"><button>Sell</button></Link>
+              <Link to="/buy"><button className="search-button">Search</button></Link>
+              <Link to="/rankings"><button className="ranking-button">Rankings</button></Link>
+              <Link to="/sell"><button className="sell-button">Sell</button></Link>
              </div>
-             <div className="stocks">
+             <div className="profile-stock-container">
                {this.state.userStocks.map(stock => {
                  return (
-                   <Link className="stock-holder" key={stock.stock_symbol} to={`/stock/${stock.stock_symbol}`}>
-                       <p>{stock.stock_symbol}</p>
+                   <Link className="sell-stock-info-container" key={stock.stock_symbol} to={`/stock/${stock.stock_symbol}`}>
+                       <h1 className="single-quote">${stock.stock_symbol}</h1>
+                       <p className="num-shares">Number of Shares:</p>
                        <p>{stock.num_of_shares} shares</p>
                    </Link>
                  );
