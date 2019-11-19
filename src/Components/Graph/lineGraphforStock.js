@@ -1,5 +1,5 @@
 import React from 'react';
-import {VictoryChart, VictoryLine, VictoryScatter} from 'victory'
+import {VictoryChart, VictoryLine, VictoryScatter, VictoryAxis} from 'victory'
 import './linearGraph.css'
 
 const cartesianInterpolations = [
@@ -56,6 +56,16 @@ class stockChart extends React.Component {
   }
 
   render() {
+    const chartTheme = {
+      axis: {
+        style: {
+          tickLabels: {
+            // this changed the color of my numbers to white
+            fill: 'white',
+          },
+        },
+      },
+    };
 
     return (
       <div className='testing'>
@@ -65,14 +75,16 @@ class stockChart extends React.Component {
           onChange={(event) => this.setState({ interpolation: event.target.value })}
         />
 
-        <VictoryChart polar={this.state.polar} height={500} width={1000}>
+        <VictoryChart polar={this.state.polar} height={500} width={1000} style={{ tickLabels: {color: 'white'} }}>
+        <VictoryAxis  dependentAxis style={{ axis: {stroke: "white"} }} />
+        <VictoryAxis  style={{ axis: {stroke: "white"} }}/>
           <VictoryLine
             interpolation={this.state.interpolation} data={this.graphData()}
             style={{ data: { stroke: "#c43a31" } }}
           />
           <VictoryScatter data={this.graphData()}
-            size={2}
-            style={{ data: { fill: "#c43a31" } }}
+            size={4}
+            style={{ data: { fill: "#ddad6b" } }}
           />
         </VictoryChart>
       </div>

@@ -33,7 +33,6 @@ class App extends React.Component {
       selectedGroup: selectedGroupData,
       updateBalanceGroup: selectedGroupData
     })
-
   }
 
   updateSelectedGroupData = updatedBalance => {
@@ -68,7 +67,7 @@ class App extends React.Component {
       saveSelectedGroupData: this.saveSelectedGroupData,
       selectedGroup: this.state.selectedGroup,
       updateSelectedGroupData: this.updateSelectedGroupData,
-      updateBalance: this.state.updateBalanceGroup,
+      updateBalance: this.state.updateBalanceGroup
     }
 
     return (

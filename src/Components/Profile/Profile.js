@@ -16,6 +16,7 @@ class Profile extends React.Component {
  }
  componentDidMount = () => {
    const groupid = this.context.selectedGroup.groupid
+   console.log(groupid)
    equityService.getEquity(groupid)
      .then(userStocks => {
        this.setState({userStocks})
@@ -46,13 +47,6 @@ class Profile extends React.Component {
      equity: totalEquity
    }
 
-<<<<<<< HEAD
-=======
-   //if(the last graphdata.date_created - date.now() > 2day){
-   userGraphService.createGraphData(graphData)
-    .then(newGraphData => this.state.userGraphData.push(newGraphData))
-
->>>>>>> ef2e23db7cc9323fbd136f73f3463db874712994
    this.setState({totalEquity});
 
    let date = new Date()
@@ -92,7 +86,7 @@ class Profile extends React.Component {
    } else {
       userGraphService.createGraphData(groupGraphData)
         .then(() => {
-          return userGraphService.getGraphData(filteredGraphData[0].groupid)
+          return userGraphService.getGraphData(filteredGraphData[0].id)
             .then(data => this.setState({userGraphData: data}))
         })
    }
