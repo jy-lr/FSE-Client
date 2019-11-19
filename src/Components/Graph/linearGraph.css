@@ -1,5 +1,3 @@
-.testing > tspan[text-anchor="middle"]{
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-size: 2rem;
+tspan{
+  color: white;
 }

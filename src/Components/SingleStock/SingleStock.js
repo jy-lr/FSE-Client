@@ -6,6 +6,7 @@ import config from '../../config'
 import equityService from '../../Services/equity-service'
 import Context from '../Context/Context'
 import StockChart from '../Graph/lineGraphforStock'
+import {FaCaretUp, FaCaretDown} from 'react-icons/fa'
 
 class SingleStock extends React.Component {
   static contextType = Context
@@ -96,6 +97,22 @@ class SingleStock extends React.Component {
     
   }
 
+  handleUpDown = () => {
+    if(Math.sign(this.state.stockData.changePercent) === 1) {
+      return <FaCaretUp />
+    } else {
+      return <FaCaretDown />
+    }
+  }
+
+  handleColor = () => {
+    if(Math.sign(this.state.stockData.changePercent) === 1) {
+      return 'green'
+    } else {
+      return 'red'
+    }
+  }
+
   render(){
     console.log(this.state.userStocks)
     
@@ -104,43 +121,34 @@ class SingleStock extends React.Component {
         <Nav />
         <div className="singlestock">
           <Link to={this.state.userStocks[0] ? `/profile/${this.state.userStocks[0].groupid}`: '/groups'}><button>Back</button></Link>
-          <h2>{this.state.stockData.companyName}</h2>
+          <h1 className="stock-fullname">{this.state.stockData.companyName}</h1>
           <StockChart stockData={this.state.graphData}/>
           <div key={this.state.stockData.symbol} className="stock-info">
             <section className="stock-info-container">
               <div>
-                <p>Symbol</p>
-                <p>{this.state.stockData.symbol}</p>
+                <h1 className="single-quote">${this.state.stockData.symbol}</h1>
               </div>
               <div>
-                <p>Price</p>
-                <p>{this.state.stockData.latestPrice}</p>
+                <p className="quote-title">Price:</p>
+    <p>${this.state.stockData.latestPrice} <span className={this.handleColor()}>{this.handleUpDown()} {this.state.stockData.changePercent*100}%</span></p>
               </div>
               <div>
-                <p>Open Price</p>
-                <p>{this.state.stockData.open}</p>
+                <p className="quote-title">Open Price:</p>
+                <p>${this.state.stockData.open}</p>
               </div>
               <div>
-                <p>Previous Close Price</p>
-                <p>{this.state.stockData.previousClose}</p>
+                <p className="quote-title">52 Week High:</p>
+                <p>${this.state.stockData.week52High}</p>
               </div>
               <div>
-                <p>Percent Change</p>
-                <p>{this.state.stockData.changePercent*100}%</p>
-              </div>
-              <div>
-                <p>52 Week High</p>
-                <p>{this.state.stockData.week52High}</p>
-              </div>
-              <div>
-                <p>52 Week Low</p>
-                <p>{this.state.stockData.week52Low}</p>
+                <p className="quote-title">52 Week Low:</p>
+                <p>${this.state.stockData.week52Low}</p>
               </div>
             </section>
             <form className="buy-form" onSubmit={(e) => this.handleBuy(e)}>
-              <p>Available Balance: {this.context.updateBalance.cash_balance}</p>
+              <p><span className="available-balance">Available Balance: </span>${this.context.updateBalance.cash_balance}</p>
               <div>
-                <label>Quantity</label>
+                <label className="quantity-label">Quantity</label>
                 <input value={this.state.quantity} className="Quantity-input" onChange={(e) => this.quantityInput(e)}/>
               </div>
               <button className="single-stock-buy-button" type="submit">Buy</button>

@@ -16,6 +16,7 @@ class Profile extends React.Component {
  }
  componentDidMount = () => {
    const groupid = this.context.selectedGroup.groupid
+   console.log(groupid)
    equityService.getEquity(groupid)
      .then(userStocks => {
        this.setState({userStocks})
@@ -85,7 +86,7 @@ class Profile extends React.Component {
    } else {
       userGraphService.createGraphData(groupGraphData)
         .then(() => {
-          return userGraphService.getGraphData(filteredGraphData[0].groupid)
+          return userGraphService.getGraphData(filteredGraphData[0].id)
             .then(data => this.setState({userGraphData: data}))
         })
    }
