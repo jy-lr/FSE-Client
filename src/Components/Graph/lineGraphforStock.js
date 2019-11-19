@@ -56,16 +56,6 @@ class stockChart extends React.Component {
   }
 
   render() {
-    const chartTheme = {
-      axis: {
-        style: {
-          tickLabels: {
-            // this changed the color of my numbers to white
-            fill: 'white',
-          },
-        },
-      },
-    };
 
     return (
       <div className='testing'>
