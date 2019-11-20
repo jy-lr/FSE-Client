@@ -29,6 +29,7 @@ class App extends React.Component {
   }
 
   saveSelectedGroupData = (selectedGroupData) => {
+    console.log(selectedGroupData)
     this.setState({
       selectedGroup: selectedGroupData,
       updateBalanceGroup: selectedGroupData
@@ -76,7 +77,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Login}/>
             <Route exact path="/groups" component={ChooseGroup}/>
-            <Route exact path="/profile/:groupid" component={Profile}/>
+            <Route exact path="/profile/:groupid" component={(props) => <Profile key={props.match.params.groupid}/>}/>
             <Route exact path={"/rankings"} component={() => <GroupRankings />}/>
             <Route exact path="/stock/:id" component={SingleStock}/>
             <Route exact path={"/create-group"} component={() => <CreateGroup />}/>
