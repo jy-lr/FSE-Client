@@ -51,7 +51,7 @@ class Profile extends React.Component {
 
    let date = new Date()
    let month = date.getMonth()
-   let day = date.getDate()+1
+   let day = date.getDate()
 
    const filteredGraphData = this.state.userGraphData.filter(graphData => {
     let graphDate = new Date(graphData.date_created)
@@ -86,8 +86,10 @@ class Profile extends React.Component {
    } else {
       userGraphService.createGraphData(groupGraphData)
         .then(() => {
-          return userGraphService.getGraphData(filteredGraphData[0].id)
-            .then(data => this.setState({userGraphData: data}))
+          return userGraphService.getGraphData(groupGraphData.groupid)
+            .then(data => {
+              console.log(data)
+              this.setState({userGraphData: data})})
         })
    }
 
