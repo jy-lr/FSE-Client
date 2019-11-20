@@ -90,23 +90,43 @@ class GroupRankings extends React.Component {
         return 0
       }
 
+    handleRank = (rank) => {
+        if (rank === 0) {
+            return "first-place"
+        } 
+        return 'not-first-place'
+    }
+
+    handleRankNum = (rank) => {
+        if (rank === 0) {
+            return "first-place-num"
+        }
+        return "not-first-place-num"
+    }
+
     render(){
         return (
             <>
             <Nav />
             <div className="group-rankings">
-                <h2>Group Rankings</h2>
+                <h2 className="ranking-title">Group Rankings</h2>
+                <div className="rank-container">
                 {this.state.group.sort((a,b) => {
                     return b.equity - a.equity
                 }).map((member, i) => {
                     return (
-                    <div key={i} className="member-holder">
-                        <p>{i + 1}</p>
-                        <p>{member.user_name}</p>
-                        <p>${member.equity}</p>
+                        <div className={`rank-holder ${this.handleRank(i)}`}>
+                            <div key={i} className="member-holder">
+                                <h1 className={`rank ${this.handleRankNum(i)}`} >{i + 1}</h1>
+                                <div className="rank-spacing">
+                                    <p className="userName">{member.user_name}</p>
+                                    <p className="ranking-equity">${member.equity}</p>
+                                </div>
+                            </div>
                     </div>)
                 })}
-                <h3>Time Remaining: {this.calculateTimeLeft()} days</h3>
+                </div>
+                <h3 className="ranking-time">Time Remaining: {this.calculateTimeLeft()} days</h3>
             </div>
             </>
         );

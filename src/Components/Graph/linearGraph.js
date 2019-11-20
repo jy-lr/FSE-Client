@@ -1,6 +1,5 @@
 import React from 'react';
-import {VictoryChart, VictoryLine, VictoryScatter} from 'victory'
-import './linearGraph.css'
+import {VictoryChart, VictoryLine, VictoryScatter, VictoryAxis} from 'victory'
 
 
 const cartesianInterpolations = [
@@ -43,9 +42,7 @@ class LinearChart extends React.Component {
       let date = new Date(storedData.date_created)
       let month = date.getMonth() + 1
       let day = date.getDate()
-      let hour = date.getHours()
-      let min = date.getMinutes()
-      let combine = `${month}/${day}h${hour}`
+      let combine = `${month}/${day}`
       let newData = {x: combine, y: storedData.equity}
       return newData
     })
@@ -56,6 +53,8 @@ class LinearChart extends React.Component {
     //   {x: null, y: null},
     //   {x: 3, y: 9}
     // ]
+    const starting = {x: 0, y: 0}
+    data.unshift(starting)
     return data
   }
 
@@ -77,14 +76,16 @@ class LinearChart extends React.Component {
           onChange={(event) => this.setState({ interpolation: event.target.value })}
         />
 
-        <VictoryChart polar={this.state.polar} height={500} width={1000}>
+        <VictoryChart polar={this.state.polar} height={500} width={1000} theme={{axis: {style: {tickLabels: {fill: "white"}, grid: {fill: "none", stroke: "none"}}}}}>
+        <VictoryAxis  dependentAxis style={{ axis: {stroke: "white"} }} />
+        <VictoryAxis style={{ axis: {stroke: "white"} }}/>
           <VictoryLine
             interpolation={this.state.interpolation} data={this.graphData()}
             style={{ data: { stroke: "#c43a31" } }}
           />
           <VictoryScatter data={this.graphData()}
-            size={2}
-            style={{ data: { fill: "#c43a31" } }}
+            size={4}
+            style={{ data: { fill: "#ddad6b" } }}
           />
         </VictoryChart>
       </div>

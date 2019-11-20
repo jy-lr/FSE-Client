@@ -6,6 +6,9 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #202225;
+    min-height: 850px;
+
 }
 
 .graph-holder {
@@ -30,6 +33,14 @@ h1 {
     background: lightgray;
 }
 
+.links {
+    display: flex;
+    justify-content: space-evenly;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 
 .stocks {
     margin-top: 48px;
@@ -43,6 +54,7 @@ h1 {
     justify-content: space-evenly;
     flex-wrap: wrap;
     background-color: #343a42;
+    padding-bottom: 2rem;
 }
 
 .search-button {
@@ -57,4 +69,39 @@ h1 {
 
 .profile-equity {
     color: #ddad6b;
+    margin-top: 2rem;
+}
+
+@media only screen and (max-width: 300px) and (min-width: 0px) {
+
+}
+@media only screen and (max-width: 600px) and (min-width: 301px) {
+
+}
+@media only screen and (max-width: 900px) and (min-width: 601px) {
+    .profile {
+        min-height: 1000px;
+
+    }
+}
+@media only screen and (max-width: 1200px) and (min-width: 901px) {
+    .profile {
+        min-height: 1000px;
+    }
+}
+@media only screen and (max-width: 1700px) and (min-width: 1201px) {
+    .profile {
+        min-height: 1000px;
+    }
+}
+@media only screen and (max-width:2200px) and (min-width: 1701px) {
+    .profile {
+        min-height: 1000px;
+    }
+}
+@media only screen and (min-width: 2201px) {
+    .profile {
+        min-height: 1500px;
+    
+    }
 }

@@ -56,13 +56,13 @@ class Nav extends React.Component {
         return (
             <>
             <Menu>
-            <Link to="/groups">Overview</Link>
-            <div className="ChooseGroup">
+            <Link to="/groups"><h1 className="overview">Overview</h1></Link>
+            <div className="nav-choose-group">
                 {this.state.userGroups.map(group => {
                 return (
                 <Link key={group.id} to={this.chooseLink(group)} >
-                <div onClick={() => this.handleClick(group)} className="group">
-                    <h3>{group.group_name}</h3>
+                <div onClick={() => this.handleClick(group)} className="nav-groups">
+                    <h3 className="nav-group">{group.group_name}</h3>
                     {this.calculateTimeLeft(group)}
                 </div>
                 </Link>

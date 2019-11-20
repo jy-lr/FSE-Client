@@ -7,6 +7,15 @@
     padding: 0 20px;
 }
 
+.bm-menu {
+    background-color: #202225;
+}
+
+.overview {
+    color: #ddad6b;
+    text-align: center;
+}
+
 .menu-holder {
     height: 48px;
     background: #999999;
@@ -17,4 +26,8 @@
     background: #999999;
     height: 48px;
     width: 48px;
+}
+
+.nav-group {
+    color: #ff2825;
 }

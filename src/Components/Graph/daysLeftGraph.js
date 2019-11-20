@@ -56,7 +56,7 @@ class Graph extends React.Component {
                   textAnchor="middle" verticalAnchor="middle"
                   x={200} y={200}
                   text={`${this.props.days} Days Left`}
-                  style={{ fontSize: 30 }}
+                  style={{ fontSize: 30, fill: "#ddad6b" }}
                 />
               );
             }}

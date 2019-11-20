@@ -2,16 +2,16 @@ h2, h3 {
     text-align: center;
 }
 
-.member-holder {
+.rank-holder {
     display: flex;
-    justify-content: space-between;
-    background: grey;
-    height: 48px;
+    flex-direction: column;
+    width: 80%;
+    border-radius: 15px;
+    margin-top: 1rem;
+    height: 4rem;
+    justify-content: center;
 }
 
-.member-holder:nth-of-type(even) {
-    background: lightgray;
-}
 
 p {
     color: white;
@@ -22,3 +22,120 @@ p {
     margin-top: 32px;
 }
 
+.rank-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.member-holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.rank {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-right: solid 1px white;
+    height: 100%;
+}
+
+.rank-spacing {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.first-place-num {
+    color: #ddad6b;
+}
+
+.not-first-place-num {
+    color: white;
+}
+
+.userName {
+    margin-left: 2rem;
+}
+
+.ranking-equity {
+    margin-right: .5rem;
+    color: white;
+}
+
+.first-place {
+    background-color: #ff2825;
+}
+
+.not-first-place {
+    background-color: black;
+}
+
+.ranking-title {
+    color: #ddad6b;
+    margin-bottom: 2rem;
+}
+
+.group-rankings {
+    background-color: #343a42;
+    min-height: 850px;
+    padding-top: 5rem;
+}
+
+.ranking-time {
+    margin-top: 2rem;
+    color: #ddad6b;
+
+}
+
+@media only screen and (max-width: 300px) and (min-width: 0px) {
+  
+}
+@media only screen and (max-width: 450px) and (min-width: 301px) {
+
+}
+@media only screen and (max-width: 600px) and (min-width: 451px) {
+    .rank-holder {
+        width: 60%;
+    }
+
+}
+@media only screen and (max-width: 900px) and (min-width: 601px) {
+    .rank-holder {
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 1200px) and (min-width: 901px) {
+    .rank-holder {
+        width: 40%;
+    }
+    .group-rankings {
+        min-height: 1000px;
+    }
+}
+@media only screen and (max-width: 1700px) and (min-width: 1201px) {
+    .rank-holder {
+        width: 30%;
+    }
+    .group-rankings {
+        min-height: 1000px;
+    }
+}
+@media only screen and (max-width:2200px) and (min-width: 1701px) {
+    .rank-holder {
+        width: 25%;
+    }
+    .group-rankings {
+        min-height: 1000px;
+    }
+}
+@media only screen and (min-width: 2201px) {
+    .rank-holder {
+        width: 20%;
+    }
+    .group-rankings {
+        min-height: 1500px;
+    }
+}
