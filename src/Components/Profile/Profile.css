@@ -60,11 +60,21 @@ h1 {
 .search-button {
     background-color: #07b532;
     color: white;
+    border: solid #707070 2px;
+    margin: 13px;
+    font-size: 20px;
+    width: 102px;
+    border-radius: 20px;
 }
 
 .ranking-button {
     background-color: #ddad6b;
-    color: black;
+    border: solid #707070 2px;
+    color: white;
+    margin: 13px;
+    font-size: 20px;
+    width: 102px;
+    border-radius: 20px;
 }
 
 .profile-equity {

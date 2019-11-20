@@ -19,13 +19,12 @@ input {
     font-size: 16px;
 }
 
-button {
+.single-stock-buy-button {
     border: solid #707070 2px;
     margin: 13px;
     font-size: 20px;
     width: 102px;
     border-radius: 20px;
-    background: none;
 }
 .symbolsearch {
     color: #ddad6b;

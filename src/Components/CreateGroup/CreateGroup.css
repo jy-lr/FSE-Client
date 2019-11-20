@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 1000px;
+    background-color: #343a42;
 }
 
 .groupform {
@@ -17,17 +19,68 @@ input {
     width: 185px;
     font-size: 16px;
 }
+.result-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .5rem;
+    background-color: black;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 9px;
+}
 
-button {
-    border: solid #707070 2px;
-    margin: 13px;
-    font-size: 20px;
-    width: 102px;
-    border-radius: 20px;
-    background: none;
+.result-username {
+    color: #ff2825;
+    font-size: 1.2rem;
+    margin-right: 1.5rem;
 }
 
 label {
     font-size: 20px;
     color: #707070;
+}
+
+#search-user, #group-name {
+    color: #ddad6b;
+}
+
+#searchuser, #groupname {
+    border-radius: 10px;
+    height: 1.7rem;
+    background-color: hsla(0,0%,100%,.6);
+    color: black;
+}
+
+.search-user-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-users-results {
+    height: 100%;
+    padding-bottom: 3rem;
+    padding-top: 2rem;
+    border-radius: 10px;
+    width: 65%;
+}
+
+.search-user-button {
+    font-size: 1.5rem;
+    border-radius: 8px;
+    background-color: #07b532;
+    border: none;
+    width: 2rem;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+#added-username {
+    color: #ddad6b;
+    margin-left: auto;
+    margin-right: auto;
 }

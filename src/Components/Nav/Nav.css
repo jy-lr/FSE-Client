@@ -30,4 +30,7 @@
 
 .nav-group {
     color: #ff2825;
+    border: 1px solid #ddad6b;
+    margin-top: 2rem;
+    border-radius: 8px;
 }
