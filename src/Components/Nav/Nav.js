@@ -6,7 +6,7 @@ import Context from '../Context/Context';
 import './Nav.css'
 
 class Nav extends React.Component {
-    static contextType = Context;
+  static contextType = Context;
 
   constructor(props) {
     super(props)
@@ -25,7 +25,6 @@ class Nav extends React.Component {
   handleClick = (group) => {
     console.log(group)
     this.context.saveSelectedGroupData(group)
-    
   }
 
   
@@ -61,8 +60,8 @@ class Nav extends React.Component {
             <div className="ChooseGroup">
                 {this.state.userGroups.map(group => {
                 return (
-                <Link key={group.id} to={this.chooseLink(group)}>
-                <div className="group" onClick={() => this.handleClick(group)}>
+                <Link key={group.id} to={this.chooseLink(group)} >
+                <div onClick={() => this.handleClick(group)} className="group">
                     <h3>{group.group_name}</h3>
                     {this.calculateTimeLeft(group)}
                 </div>
