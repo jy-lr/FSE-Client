@@ -51,7 +51,7 @@ class Profile extends React.Component {
 
    let date = new Date()
    let month = date.getMonth()
-   let day = date.getDate()+1
+   let day = date.getDate()
 
    const filteredGraphData = this.state.userGraphData.filter(graphData => {
     let graphDate = new Date(graphData.date_created)
@@ -87,44 +87,11 @@ class Profile extends React.Component {
       userGraphService.createGraphData(groupGraphData)
         .then(() => {
           return userGraphService.getGraphData(groupGraphData.groupid)
-            .then(data => this.setState({userGraphData: data}))
+            .then(data => {
+              console.log(data)
+              this.setState({userGraphData: data})})
         })
    }
-
-
-  //  if (!!filteredGraphData) {
-  //     const patchGraphData = {
-  //       id: filteredGraphData.id,
-  //       equity: totalEquity,
-  //       groupid: filteredGraphData.groupid
-  //     }
-  //     return userGraphService.updateGraphData(patchGraphData)
-  //       .then(updatedGraphData => this.setState({userGraphData: updatedGraphData}))
-  //  }
-
-
-
-
-
-
-  //  this.state.userGraphData.map(graphData => {
-  //    let graphDate = new Date(graphData.date_created)
-  //    let dataMonth = graphDate.getMonth()
-  //    let dataDay = graphDate.getDate()
-
-  //   if (`${dataMonth}/${dataDay}`===`${month}/${day}` ) {
-  //     const patchGraphData = {
-  //      id: graphData.id,
-  //      equity: totalEquity
-  //     }
-  //     console.log(patchGraphData)
-  //     userGraphService.updateGraphData(patchGraphData)
-  //       .then(updatedGraphData => console.log(updatedGraphData))
-  //   } else {
-  //     userGraphService.createGraphData(groupGraphData)
-  //       .then(newGraphData => this.state.userGraphData.push(newGraphData))
-  //   }
-  //  })
 
  }
 

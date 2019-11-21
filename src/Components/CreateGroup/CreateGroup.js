@@ -6,6 +6,7 @@ import groupService from '../../Services/group-service';
 import userGroupService from '../../Services/user-group-service';
 import Nav from '../Nav/Nav';
 import Context from '../Context/Context'
+import {IoIosAddCircleOutline} from 'react-icons/io'
 
 class CreateGroup extends React.Component {
     static contextType = Context
@@ -61,40 +62,56 @@ class CreateGroup extends React.Component {
         })
     }
 
+    handleResultBox = () => {
+        let style = {
+            display: "none"
+        }
+        let style2 = {
+            display: "block"
+        }
+        console.log(this.state.searchTerm)
+        if(this.state.searchTerm.length === 0) {
+            return style
+        } else {
+            return style2
+        }
+    }
+
     render(){
         return (
             <>
             <Nav/>
             <div className="creategroup">
-            <div className="searchuser">
+            <div className="search-user-container">
                 <form>
-                <label htmlFor="searchuser">Add Users:</label>
-                <input onChange={e => this.handleSearchUser(e)} id="searchuser" value={this.state.searchTerm}/> 
+                    <label htmlFor="searchuser" id="search-user">Add Users:</label>
+                    <input onChange={e => this.handleSearchUser(e)} id="searchuser" value={this.state.searchTerm}/> 
                 </form>
-                <div className="results"> 
+                <div className="search-users-results" style={this.handleResultBox()}> 
                     {this.state.users.map(user => {
                     return (
-                    <div key={user.id} className="user">
-                        <button value={user.id} onClick={(e) => this.handleAddUser(e)}>add</button>
-                        <h3>{user.user_name}</h3>
+                    <div key={user.id} className="result-user">
+                        <button value={user.id} className="search-user-button" onClick={(e) => this.handleAddUser(e)}>+</button>
+                        <p className="result-username">{user.user_name}</p>
                     </div>
                     );
                 })}
                 </div>
             </div>
-            <div className="results">
+                <form className="search-user-container" onSubmit={e => this.createGroup(e)}>
+                    <label htmlFor="groupname" id="group-name">Group Name</label>
+                    <input id="groupname"></input>
+            <div className="search-users-results">
                 {this.state.addedUsers.map(user => {
                     return (
-                    <div key={user.id} className="user">
-                        <h3>{user.user_name}</h3>
+                    <div key={user.id} className="result-user">
+                        <h3 id="added-username">{user.user_name}</h3>
                     </div>)}
                 )}
-            </div>
-                <form className="groupform" onSubmit={e => this.createGroup(e)}>
-                    <label htmlFor="groupname">Group Name</label>
-                    <input id="groupname"></input>
-                    <button type="submit">Start</button>
+            </div>                    
+                    <button type="submit" className="single-stock-buy-button">Start</button>
                 </form>
+                
             </div>
             </>
         );

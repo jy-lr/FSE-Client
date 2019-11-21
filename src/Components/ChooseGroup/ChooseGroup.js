@@ -65,18 +65,23 @@ class ChooseGroup extends React.Component {
       <>
       <Nav />
       <div className="ChooseGroup">
+        <h1 className="group-title">Groups</h1>
         {this.state.userGroups.map(group => {
           return (
+            <div className="group-container">
             <Link key={group.id} to={this.chooseLink(group)}>
               <div className="group" onClick={() => this.handleClick(group)}>
-                <h3>{group.group_name}</h3>
+                <h3 className="group-name">{group.group_name}</h3>
                 {this.calculateTimeLeft(group)}
               </div>
             </Link>
+            </div>
           );
         })}
       </div>
-      <Link to="/create-group">Create New Group</Link>
+      <div className="button-background">
+      <Link to="/create-group"><button className="create-group-button">Create New Group</button></Link>
+      </div>
       </>
     );
   }

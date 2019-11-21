@@ -45,7 +45,7 @@ class Register extends React.Component {
                     <input type="password" id="password"/>
                     <label htmlFor="rpassword">Repeat Password</label>
                     <input type="password" id="rpassword"/>
-                    <button>Register</button>
+                    <button className="register-button">Register</button>
                 </form>
             </div>
         );

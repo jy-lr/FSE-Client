@@ -60,9 +60,9 @@ class Login extends React.Component{
               <input id="user_name"/>
               <label htmlFor="password">Password</label>
               <input type="password" id="password"/>
-              <button type="submit">Login</button>
+              <button type="submit" className="login-button">Login</button>
               <Link to="/register"><button>Register</button></Link>
-              <button onClick={() => this.handleDemo()}>Demo</button>
+              <button className="login-button"onClick={() => this.handleDemo()}>Demo</button>
           </form>
       </div>
     );

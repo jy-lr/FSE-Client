@@ -26,7 +26,8 @@ class SingleStock extends React.Component {
       quantity: 0,
       totalCost: 0,
       availableBalance: 0,
-      userStocks: []
+      userStocks: [],
+      news: []
     }
   }
 
@@ -48,6 +49,10 @@ class SingleStock extends React.Component {
     fetch(`https://sandbox.iexapis.com/stable/stock/${stockQuote}/chart/5d?token=${config.STOCK_TOKEN}`)
        .then(res => res.json())
        .then(data => this.setState({graphData: data}))
+
+    fetch(`https://sandbox.iexapis.com/stable/stock/${stockQuote}/news/last/3?token=${config.STOCK_TOKEN}`)
+       .then(res => res.json())
+       .then(data => this.setState({news: data}))
   }
 
 
@@ -113,16 +118,24 @@ class SingleStock extends React.Component {
     }
   }
 
+  handleTime = (time) => {
+    let date = time
+    let d = new Date(date)
+    let ds = d.toLocaleDateString()
+    return ds
+  }
+
   render(){
-    console.log(this.state.userStocks)
+    console.log(this.state.news)
     
     return (
       <>
         <Nav />
         <div className="singlestock">
-          <Link to={this.state.userStocks[0] ? `/profile/${this.state.userStocks[0].groupid}`: '/groups'}><button>Back</button></Link>
           <h1 className="stock-fullname">{this.state.stockData.companyName}</h1>
           <StockChart stockData={this.state.graphData}/>
+          <Link to={this.state.userStocks[0] ? `/profile/${this.state.userStocks[0].groupid}`: '/groups'}><button id="back-button">Back</button></Link>
+
           <div key={this.state.stockData.symbol} className="stock-info">
             <section className="stock-info-container">
               <div>
@@ -155,7 +168,21 @@ class SingleStock extends React.Component {
             </form>
             
           </div>
-            <div className="news"></div>
+            <div className="news">
+              <h1>News</h1>
+                {this.state.news.map(data => {
+                  return (
+                    <div id="news-container">
+                      <a href={`${data.url}`}>{data.headline}</a>
+                      <div className="news-date-container">
+                        <p>{data.source}</p>
+                        <p id="news-date">{this.handleTime(data.datetime)}</p>
+                      </div>
+                    </div>
+                  )
+                })}
+
+            </div>
         </div>
       </>
     );

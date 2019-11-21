@@ -12,6 +12,7 @@
 
 .stock-fullname {
     color: #ddad6b;
+    margin-top: 1rem;
 }
 
 .stock-info {
@@ -20,6 +21,7 @@
     background: #343a42;
     width: 100%;
     flex-direction: column;
+    
 }
 
 .singlestock {
@@ -32,8 +34,45 @@
 
 .news {
     background: grey;
-    height: 300px;
     width: 100%;
+}
+#news-date {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.news > h1 {
+    text-align: center;
+    color: #8c201e;
+    padding: 1rem;
+}
+
+#news-container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: black;
+    border-bottom: 3px solid #8c201e;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#news-container > a {
+    color: hsla(0,0%,100%,.6);
+}
+
+.news-date-container {
+    display: flex;
+    justify-content: right;
+}
+
+.news-date-container > p {
+    color: #ddad6b;
 }
 
 .stock-info-container {
@@ -46,6 +85,16 @@
     height: 20rem;
     padding: 1rem;
     border-radius: 15px;
+    border-bottom: 3px solid #ddad6b;
+}
+
+#back-button {
+    border: solid #707070 2px;
+    margin: 13px;
+    font-size: 20px;
+    width: 102px;
+    border-radius: 20px;
+    background-color: #ff2825;
 }
 
 .buy-form {
@@ -95,6 +144,10 @@
         flex-direction: row;
         justify-content: space-evenly;
     }
+    #news-container {
+        margin-left: 6rem;
+        margin-right: 6rem;
+    }
 }
 @media only screen and (max-width: 1200px) and (min-width: 901px) {
     .stock-info {
@@ -109,6 +162,13 @@
     }
     .buy-form {
         margin-right: 3rem;
+    }
+
+    #news-container {
+        height: 4rem;
+        margin-right: 10rem;
+        margin-left: 10rem;
+
     }
 }
 @media only screen and (max-width: 1700px) and (min-width: 1201px) {
@@ -125,6 +185,12 @@
     .buy-form {
         margin-right: 3rem;
     }
+    #news-container {
+        height: 6rem;
+        margin-right: 15rem;
+        margin-left: 15rem;
+
+    }
 }
 @media only screen and (max-width:2200px) and (min-width: 1701px) {
     .stock-info {
@@ -140,6 +206,12 @@
     .buy-form {
         margin-right: 3rem;
     }
+    #news-container {
+        height: 6rem;
+        margin-right: 20rem;
+        margin-left: 20rem;
+
+    }
 }
 @media only screen and (min-width: 2201px) {
     .stock-info {
@@ -154,5 +226,11 @@
     }
     .buy-form {
         margin-right: 3rem;
+    }
+    #news-container {
+        height: 6rem;
+        margin-right: 20rem;
+        margin-left: 20rem;
+
     }
 }

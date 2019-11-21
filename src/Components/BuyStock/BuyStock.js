@@ -38,18 +38,20 @@ class BuyStock extends React.Component{
             <Nav />
             <div className="buy">
                 <form className="buyform" >
-                    <label htmlFor="symbolsearch">Search Stocks</label>
+                    <label htmlFor="symbolsearch" className="symbolsearch">Search Stocks</label>
                     <input id="symbolsearch" value={this.state.searchVal} onChange={(e) => this.searchVal(e)}></input>
                 </form>
             </div>
-            <div className="Results">
+            <div className="search-stock-container">
                 {this.state.searchResult.map(stock => {
                     return (
-                        <div key={stock.symbol} className="stock"> 
-                            <div className="sstock-holder">
-                                <p>{stock.symbol}</p>
-                                <Link to={`/stock/${stock.symbol}`}><button type="submit" value={stock.symbol}>Review</button></Link>
-                            </div>
+                        <div key={stock.symbol} className="search-stock-info-container">
+                            <h1 className="single-quote">${stock.symbol}</h1>
+                            <p className="region">Region:</p>
+                            <p>{stock.region}</p>
+                            <p className="exchange">Exchange:</p>
+                            <p>{stock.exchange}</p>
+                            <Link to={`/stock/${stock.symbol}`}><button type="submit" value={stock.symbol} className="single-stock-buy-button">Review</button></Link>
                         </div>
                     )
                 })}
