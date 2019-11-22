@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 // import PrivateRoute from './Utilities/PrivateRoute';
 // import PublicOnlyRoute from './Utilities/PublicOnlyRoute';
@@ -29,7 +29,6 @@ class App extends React.Component {
   }
 
   saveSelectedGroupData = (selectedGroupData) => {
-    console.log(selectedGroupData)
     this.setState({
       selectedGroup: selectedGroupData,
       updateBalanceGroup: selectedGroupData
@@ -37,14 +36,10 @@ class App extends React.Component {
   }
 
   updateSelectedGroupData = updatedBalance => {
-    console.log(this.state.updateBalanceGroup)
     const id = parseInt(this.state.selectedGroup.id)
     const cashBalance = parseInt(updatedBalance)
-    console.log(id, cashBalance)
     userGroupService.updateCashBalance(id, cashBalance)
       .then(data => data)
-
-      console.log(this.state.updateBalanceGroup)
       
     this.setState(prevState => {
       let updateBalanceGroup = Object.assign({}, prevState.updateBalanceGroup)
@@ -56,7 +51,7 @@ class App extends React.Component {
 
   updateSelectedGroupData() {
     userGroupService.getAllofUsersGroups()
-    .then(userGroups => console.log(userGroups))
+    .then(userGroups => userGroups)
   }
 
 

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import userGroupService from '../../Services/user-group-service';
 import Context from '../Context/Context';
 import './Nav.css'
+import icon from '../../pic/icon3.png'
 
 class Nav extends React.Component {
   static contextType = Context;
@@ -23,7 +24,6 @@ class Nav extends React.Component {
   }
 
   handleClick = (group) => {
-    console.log(group)
     this.context.saveSelectedGroupData(group)
   }
 
@@ -52,7 +52,6 @@ class Nav extends React.Component {
   }
 
     render(){
-      console.log(this.state.userGroups)
         return (
             <>
             <Menu>
@@ -71,7 +70,7 @@ class Nav extends React.Component {
             </div>
             </Menu>
             <div className="nav">
-                <div className="logo-holder"></div>
+                <Link to="/groups"><img className="logo-holder" src={icon} alt="logo"></img></Link>
             </div>
             </>
         );

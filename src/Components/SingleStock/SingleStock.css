@@ -13,6 +13,8 @@
 .stock-fullname {
     color: #ddad6b;
     margin-top: 1rem;
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
 }
 
 .stock-info {
@@ -46,6 +48,7 @@
     text-align: center;
     color: #8c201e;
     padding: 1rem;
+    font-size: 1.7rem;
 }
 
 #news-container {
@@ -131,7 +134,11 @@
   
 }
 @media only screen and (max-width: 600px) and (min-width: 301px) {
-
+    .stock-info-container {
+        width: 50%;
+        margin-right: auto;
+        margin-left: auto;
+    }
 }
 @media only screen and (max-width: 900px) and (min-width: 601px) {
     .stock-info-container {

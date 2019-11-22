@@ -23,9 +23,8 @@
 }
 
 .logo-holder {
-    background: #999999;
-    height: 48px;
-    width: 48px;
+    height: 64px;
+    padding-top: 2px;
 }
 
 .nav-group {

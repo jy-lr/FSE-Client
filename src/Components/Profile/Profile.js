@@ -16,7 +16,6 @@ class Profile extends React.Component {
  }
  componentDidMount = () => {
    const groupid = this.context.selectedGroup.groupid
-   console.log(groupid)
    equityService.getEquity(groupid)
      .then(userStocks => {
        this.setState({userStocks})
@@ -58,7 +57,6 @@ class Profile extends React.Component {
     let dataMonth = graphDate.getMonth()
     let dataDay = graphDate.getDate()
 
-    console.log(`${dataMonth}/${dataDay}`,`${month}/${day}`)
     if(`${dataMonth}/${dataDay}`===`${month}/${day}`) {
       return graphData
     } 
@@ -68,7 +66,6 @@ class Profile extends React.Component {
     return userGraphService.createGraphData(groupGraphData)
       .then(newGraphData => this.state.userGraphData.push(newGraphData))
    }
-   console.log(filteredGraphData)
 
    if (filteredGraphData.length >= 1) {
 
@@ -77,7 +74,6 @@ class Profile extends React.Component {
         equity: totalEquity,
         groupid: parseInt(filteredGraphData[0].groupid)
       }
-      console.log(patchGraphData)
       return userGraphService.updateGraphData(patchGraphData)
         .then(() => {
           userGraphService.getGraphData(filteredGraphData[0].groupid)
@@ -88,7 +84,6 @@ class Profile extends React.Component {
         .then(() => {
           return userGraphService.getGraphData(groupGraphData.groupid)
             .then(data => {
-              console.log(data)
               this.setState({userGraphData: data})})
         })
    }
@@ -111,7 +106,6 @@ class Profile extends React.Component {
  }
 
  render(){
-   console.log(this.state.userGraphData)
      return (
        <>
          <Nav />
@@ -126,7 +120,7 @@ class Profile extends React.Component {
              <div className="profile-stock-container">
                {this.state.userStocks.map(stock => {
                  return (
-                   <Link className="sell-stock-info-container" key={stock.stock_symbol} to={`/stock/${stock.stock_symbol}`}>
+                   <Link className="profile-stock-info-container" key={stock.stock_symbol} to={`/stock/${stock.stock_symbol}`}>
                        <h1 className="single-quote">${stock.stock_symbol}</h1>
                        <p className="num-shares">Number of Shares:</p>
                        <p>{stock.num_of_shares} shares</p>

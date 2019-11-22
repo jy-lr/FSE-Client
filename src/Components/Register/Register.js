@@ -1,6 +1,7 @@
 import React from 'react';
 import userService from '../../Services/user-service';
 import './Register.css';
+import icon from '../../pic/icon2.png'
 
 class Register extends React.Component {
     static defaultProps = {
@@ -12,7 +13,6 @@ class Register extends React.Component {
     handleSubmit = ev => {
         ev.preventDefault();
         const { full_name, user_name, password } = ev.target;
-        console.log(full_name.value);
     
         this.setState({ error: null })
           userService.registerUser({
@@ -33,19 +33,21 @@ class Register extends React.Component {
     
     render(){
         return (
-            <div className="Register">
-                <div className="image-placeholder"></div>
-                <hr className="grey-bar"/>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="user_name">Username</label>
+            <div className="login">
+            <div className="login-log-container">
+                <img className="login-logo" src={icon} alt="logo"/>     
+            </div>
+            <div className="grey-bar"/>
+                <form className="register-form" onSubmit={this.handleSubmit}>
+                    <label htmlFor="user_name" className="user_name">Username</label>
                     <input id="user_name"/>
-                    <label htmlFor="full_name">Full name</label>
+                    <label htmlFor="full_name" className="full_name">Full name</label>
                     <input id="full_name"/>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password" className="password">Password</label>
                     <input type="password" id="password"/>
-                    <label htmlFor="rpassword">Repeat Password</label>
+                    <label htmlFor="rpassword" className="rpassword">Repeat Password</label>
                     <input type="password" id="rpassword"/>
-                    <button className="register-button">Register</button>
+                    <button className="register-button">Register </button>
                 </form>
             </div>
         );
