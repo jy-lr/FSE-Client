@@ -1,4 +1,4 @@
-# Fit Tracker
+# Fantasy Stock Exchange
 
 ![screenshots](/src/Images/mockup.PNG)
 
@@ -6,7 +6,7 @@
 Fantasy Stock Exchange is a stock trading app that lets users trade stocks and compete against each other fantasy football style. 
 
 ## Technologies Used:
-Front-end: React, HTML/CSS, Javascript
+Front-end: React, HTML/CSS, Javascript, Victory Graph
 
 Back-end: Node.js, Express, PostgreSQL
 
