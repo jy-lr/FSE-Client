@@ -37,7 +37,7 @@ label {
     flex-direction: row;
     justify-content: space-evenly;
     background-color: #343a42;
-    min-height: -webkit-fill-available;
+    min-height: 850px;
     flex-wrap: wrap;
 
 }
