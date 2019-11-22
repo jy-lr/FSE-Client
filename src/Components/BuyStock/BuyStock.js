@@ -18,7 +18,6 @@ class BuyStock extends React.Component{
 
     handleSearch = () => {
         let stockQuote = this.state.searchVal
-        console.log(stockQuote)
     
         return fetch(`https://sandbox.iexapis.com/stable/search/${stockQuote}?token=${config.STOCK_TOKEN}`)
           .then(res => res.json())
@@ -27,12 +26,10 @@ class BuyStock extends React.Component{
 
     searchVal = async e => {
         await this.setState({searchVal: e.target.value})
-        console.log(this.state.searchVal)
         this.handleSearch()
     }
 
     render(){
-        console.log(this.state.searchResult)
         return (
             <>
             <Nav />

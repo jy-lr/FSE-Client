@@ -12,7 +12,6 @@ class Register extends React.Component {
     handleSubmit = ev => {
         ev.preventDefault();
         const { full_name, user_name, password } = ev.target;
-        console.log(full_name.value);
     
         this.setState({ error: null })
           userService.registerUser({

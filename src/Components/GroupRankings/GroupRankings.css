@@ -50,6 +50,7 @@ p {
 
 .first-place-num {
     color: #ddad6b;
+    margin-left: 5px;
 }
 
 .not-first-place-num {
@@ -58,11 +59,14 @@ p {
 
 .userName {
     margin-left: 2rem;
+    font-size: 1.2rem;
 }
 
 .ranking-equity {
     margin-right: .5rem;
     color: white;
+    font-size: 1.2rem;
+
 }
 
 .first-place {
@@ -76,6 +80,7 @@ p {
 .ranking-title {
     color: #ddad6b;
     margin-bottom: 2rem;
+    font-size: 1.7rem;
 }
 
 .group-rankings {
@@ -94,7 +99,9 @@ p {
   
 }
 @media only screen and (max-width: 450px) and (min-width: 301px) {
-
+    .userName, .ranking-equity {
+        font-size: 1rem;
+    }
 }
 @media only screen and (max-width: 600px) and (min-width: 451px) {
     .rank-holder {

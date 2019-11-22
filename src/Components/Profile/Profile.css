@@ -7,7 +7,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     background-color: #202225;
-    min-height: 850px;
+    min-height: -webkit-fill-available;
 
 }
 
@@ -80,6 +80,20 @@ h1 {
 .profile-equity {
     color: #ddad6b;
     margin-top: 2rem;
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+}
+
+.profile-stock-info-container {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    margin-top: 3rem;
+    height: 10rem;
+    padding: 1rem;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    border-bottom: 3px solid #ddad6b;
 }
 
 @media only screen and (max-width: 300px) and (min-width: 0px) {

@@ -4,7 +4,6 @@ import Nav from '../Nav/Nav';
 import equityService from '../../Services/equity-service';
 import Context from '../Context/Context';
 import {Link} from 'react-router-dom';
-import config from '../../config'
 
 class SellStock extends React.Component{
    static contextType = Context
@@ -66,8 +65,10 @@ class SellStock extends React.Component{
                    return (
                         <div key={stock.stock_symbol} className="sell-stock-info-container">
                             <Link to={`/stock/${stock.stock_symbol}`}><h1 className="single-quote">${stock.stock_symbol}</h1></Link>
+                            <div>
                             <p className="num-shares">Number of Shares:</p>
                             <p>{stock.num_of_shares}</p>
+                            </div>
                             <button value={i} onClick={e => this.handleSell(e)} className="sell-button">Sell</button>
                         </div>
                    )
