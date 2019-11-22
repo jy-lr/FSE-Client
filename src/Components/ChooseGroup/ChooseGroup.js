@@ -5,7 +5,7 @@ import Nav from '../Nav/Nav';
 import userGroupService from '../../Services/user-group-service';
 import Context from '../Context/Context';
 import Graph from '../Graph/daysLeftGraph'
-
+// import {Spinner} from 'react-bootstrap'
 //api get usergroup
 
 class ChooseGroup extends React.Component {
@@ -15,15 +15,35 @@ class ChooseGroup extends React.Component {
     super(props)
     this.state = {
       userGroups: [],
-      doneIds: []
+      doneIds: [],
+      loading: true
     }
   }
 
 
   componentDidMount = () => {
     userGroupService.getAllofUsersGroups()
-    .then(userGroups => this.setState({userGroups}))
+    .then(userGroups => this.setState({userGroups: userGroups, loading: false}))
   }
+
+  // handleLoading = () => {
+  //   const style = {
+  //     "display": 'flex',
+  //     "justify-content": 'center',
+  //     "align-items": 'center',
+  //     "height": '-webkit-fill-available',
+  //     "background-color": "#343a42"
+  //   }
+  //   const spinner = {
+  //     "width": "5rem",
+  //     "height": "5rem"
+  //   }
+  //   return (
+  //     <div classname="loading-icon" style={style}>
+  //       {/* <Spinner animation="border" style={spinner} variant="warning" role="status"/> */}
+  //     </div>
+  //   )
+  // }
 
   handleClick = (group) => {
     this.context.saveSelectedGroupData(group)
@@ -60,9 +80,11 @@ class ChooseGroup extends React.Component {
   }
 
   render(){
+    console.log(!this.state.loading)
     return (
       <>
       <Nav />
+      {/* {(this.state.loading)? this.handleLoading(): null} */}
       <div className="ChooseGroup">
         <h1 className="group-title">Groups</h1>
         {this.state.userGroups.map(group => {

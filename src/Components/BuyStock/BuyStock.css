@@ -71,7 +71,11 @@ label {
     margin-top: 2rem;
     margin-bottom: 1rem;
     border-bottom: 3px solid #07b532;
+    transition: transform .2s;
+}
 
+.search-stock-info-container:hover {
+    transform: scale(1.2);
 }
 
 .region, .exchange {
