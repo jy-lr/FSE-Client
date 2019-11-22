@@ -21,7 +21,7 @@ input {
     margin: 0;
 }
 
-.login-button {
+.login-button, .register-button {
     background-color: #07b532;
     color: white;
     border: solid #707070 2px;
@@ -54,7 +54,7 @@ label {
     display: flex;
 }
 
-.login-form {
+.login-form, .register-form {
     margin-top: 4rem;
 }
 
@@ -66,14 +66,13 @@ label {
     min-height: -webkit-fill-available;
 }
 
-.user_name, .password {
+.user_name, .password, .full_name, .rpassword {
     color: #ddad6b;
 }
 
-#user_name, #password {
+#user_name, #password, #rpassword, #full_name{
     border-radius: 10px;
     height: 1.7rem;
-    background-color: hsla(0,0%,100%,.6);
     color: black;
 }
 
