@@ -27,16 +27,12 @@ class GroupRankings extends React.Component {
     }
 
     calculateEquity(){
-        console.log(this.state);
         let users = this.state.group;
         for(let i = 0;i < users.length; i++){
             let stocks = this.state.equity;
             let userStocks = stocks.filter(equity => equity.userid === users[i].userid)
-            console.log(userStocks)
             let equity = this.calculateCurrentEquity(userStocks)
-            console.log(equity)
             users[i].equity = equity + users[i].cash_balance
-            console.log(users)
         }
 
         this.setState({group: users})
@@ -47,7 +43,6 @@ class GroupRankings extends React.Component {
         let currentTotal = 0;
         if(currentStockData){
           for(let i = 0; i < userStocks.length; i++){
-            console.log(this.state.currentStockData)
             currentTotal += (userStocks[i].num_of_shares * currentStockData[(userStocks[i].stock_symbol).toUpperCase()].quote.latestPrice)
           }
         }
@@ -127,7 +122,9 @@ class GroupRankings extends React.Component {
                 })}
                 </div>
                 <h3 className="ranking-time">Time Remaining: {this.calculateTimeLeft()} days</h3>
+
             </div>
+
             </>
         );
     }

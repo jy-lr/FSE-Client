@@ -126,7 +126,6 @@ class SingleStock extends React.Component {
   }
 
   render(){
-    console.log(this.state.news)
     
     return (
       <>

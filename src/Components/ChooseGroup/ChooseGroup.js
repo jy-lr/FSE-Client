@@ -5,6 +5,9 @@ import Nav from '../Nav/Nav';
 import userGroupService from '../../Services/user-group-service';
 import Context from '../Context/Context';
 import Graph from '../Graph/daysLeftGraph'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
+
 
 //api get usergroup
 
@@ -15,14 +18,36 @@ class ChooseGroup extends React.Component {
     super(props)
     this.state = {
       userGroups: [],
-      doneIds: []
+      doneIds: [],
+      loading: true
     }
   }
 
 
   componentDidMount = () => {
     userGroupService.getAllofUsersGroups()
-    .then(userGroups => this.setState({userGroups}))
+    .then(userGroups => this.setState({userGroups: userGroups, loading: false}))
+  }
+
+  handleLoading = () => {
+    const style = {
+      "display": 'flex',
+      "justify-content": 'center',
+      "align-items": 'center',
+      "height": '-webkit-fill-available',
+      "background-color": "#343a42"
+    }
+    return (
+      <div classname="loading-icon" style={style}>
+        <Loader
+          type="Grid"
+          color="#ddad6b"
+          height={100}
+          width={100}
+          timeout={3000} //3 secs
+        />
+      </div>
+    )
   }
 
   handleClick = (group) => {
@@ -30,7 +55,6 @@ class ChooseGroup extends React.Component {
   }
 
   calculateTimeLeft(group){
-    console.log(this.state.userGroups)
     let endDate = new Date(group.date_created)
     endDate.setDate(endDate.getDate() + 30)
     let now = new Date()
@@ -61,9 +85,11 @@ class ChooseGroup extends React.Component {
   }
 
   render(){
+    console.log(!this.state.loading)
     return (
       <>
       <Nav />
+      {(this.state.loading)? this.handleLoading(): null}
       <div className="ChooseGroup">
         <h1 className="group-title">Groups</h1>
         {this.state.userGroups.map(group => {

@@ -25,9 +25,13 @@ input {
     font-size: 20px;
     width: 102px;
     border-radius: 20px;
+    margin-bottom: 1.5rem;
+
 }
 .symbolsearch {
     color: #ddad6b;
+    font-size: 1.7rem;
+
 }
 
 #symbolsearch {
@@ -50,7 +54,7 @@ label {
     background-color: #343a42;
     padding-left: 4rem;
     padding-right: 4rem;
-    min-height: 850px;
+    min-height: -webkit-fill-available;
 }
 
 .search-stock-info-container {
@@ -59,24 +63,32 @@ label {
     background-color: black;
     width: 80%;
     justify-content: space-between;
-    height: 12rem;
+    height: 14rem;
     padding: 1rem;
     border-radius: 15px;
     margin-left: 2rem;
     margin-right: 2rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
+    border-bottom: 3px solid #07b532;
+    transition: transform .2s;
+}
+
+.search-stock-info-container:hover {
+    transform: scale(1.2);
 }
 
 .region, .exchange {
     color: hsla(0,0%,100%,.6)
 }
 
-@media only screen and (max-width: 300px) and (min-width: 0px) {
+@media only screen and (max-width: 450px) and (min-width: 301px) {
 
 }
-@media only screen and (max-width: 600px) and (min-width: 301px) {
-
+@media only screen and (max-width: 600px) and (min-width: 451px) {
+    .search-stock-info-container {
+        width: 40%;
+    }
 }
 @media only screen and (max-width: 900px) and (min-width: 601px) {
     .search-stock-info-container {
@@ -95,11 +107,11 @@ label {
 }
 @media only screen and (max-width:2200px) and (min-width: 1701px) {
     .search-stock-info-container {
-        width: 18%;
+        width: 14%;
     }
 }
 @media only screen and (min-width: 2201px) {
     .search-stock-info-container {
-        width: 18%;
+        width: 12%;
     }
 }

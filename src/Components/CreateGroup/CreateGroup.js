@@ -6,7 +6,6 @@ import groupService from '../../Services/group-service';
 import userGroupService from '../../Services/user-group-service';
 import Nav from '../Nav/Nav';
 import Context from '../Context/Context'
-import {IoIosAddCircleOutline} from 'react-icons/io'
 
 class CreateGroup extends React.Component {
     static contextType = Context
@@ -40,7 +39,6 @@ class CreateGroup extends React.Component {
     
         let currentUser = users.filter(user => user.id == currentId)
         addedUsers.push(currentUser[0]);
-        console.log(addedUsers);
         this.setState({addedUsers});
     }
 
@@ -67,9 +65,8 @@ class CreateGroup extends React.Component {
             display: "none"
         }
         let style2 = {
-            display: "block"
+            display: "flex"
         }
-        console.log(this.state.searchTerm)
         if(this.state.searchTerm.length === 0) {
             return style
         } else {

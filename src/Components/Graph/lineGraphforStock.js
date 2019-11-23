@@ -1,5 +1,5 @@
 import React from 'react';
-import {VictoryChart, VictoryLine, VictoryScatter, VictoryAxis, VictoryLabel} from 'victory'
+import {VictoryChart, VictoryLine, VictoryScatter, VictoryAxis} from 'victory'
 
 const cartesianInterpolations = [
   "basis",
@@ -36,9 +36,6 @@ class stockChart extends React.Component {
 
 
   graphData() {
-    console.log(this.props.stockData)
-
-    console.log(this.props.stockData !== undefined)
 
     if (this.props.stockData !== undefined) {
       let data = this.props.stockData.map(data => {
