@@ -37,7 +37,6 @@ label {
     flex-direction: row;
     justify-content: space-evenly;
     background-color: #343a42;
-    min-height: -webkit-fill-available;
     flex-wrap: wrap;
     width: 100%
 }
@@ -51,8 +50,8 @@ label {
     display: flex;
     flex-direction: column;
     background-color: #343a42;
-    justify-content: center;
     align-items: center;
+    min-height: -webkit-fill-available;
 }
 
 .sell-stock-info-container {
