@@ -60,19 +60,22 @@ class SellStock extends React.Component{
        return (
            <>
            <Nav />
-           <div className="sell-results">
+           <div className="sell-results-container">
+            <h1 className="profile-position">Positions</h1>
+            <div className="sell-results">
                {this.state.userStocks.map((stock, i) => {
                    return (
                         <div key={stock.stock_symbol} className="sell-stock-info-container">
-                            <Link to={`/stock/${stock.stock_symbol}`}><h1 className="single-quote">${stock.stock_symbol}</h1></Link>
-                            <div>
+                          <Link to={`/stock/${stock.stock_symbol}`}><h1 className="single-quote">${stock.stock_symbol}</h1></Link>
+                          <div>
                             <p className="num-shares">Number of Shares:</p>
                             <p>{stock.num_of_shares}</p>
-                            </div>
-                            <button value={i} onClick={e => this.handleSell(e)} className="sell-button">Sell</button>
+                          </div>
+                          <button value={i} onClick={e => this.handleSell(e)} className="sell-button">Sell</button>
                         </div>
                    )
                })}
+            </div>
            </div>
            </>
        );

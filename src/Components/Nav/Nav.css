@@ -32,4 +32,9 @@
     border: 1px solid #ddad6b;
     margin-top: 2rem;
     border-radius: 8px;
+    transition: transform .2s;
+}
+
+.nav-group:hover {
+    transform: scale(1.2);
 }

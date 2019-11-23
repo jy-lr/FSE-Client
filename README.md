@@ -14,3 +14,4 @@ Back-end: Node.js, Express, PostgreSQL
 https://github.com/jy-lr/FSE-Server
 
 ## Live app:
+https://fantasy-stock-exchange.jyin25.now.sh/
