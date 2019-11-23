@@ -118,15 +118,18 @@ class Profile extends React.Component {
               <Link to="/sell"><button className="sell-button">Sell</button></Link>
              </div>
              <div className="profile-stock-container">
-               {this.state.userStocks.map(stock => {
-                 return (
-                   <Link className="profile-stock-info-container" key={stock.stock_symbol} to={`/stock/${stock.stock_symbol}`}>
-                       <h1 className="single-quote">${stock.stock_symbol}</h1>
-                       <p className="num-shares">Number of Shares:</p>
-                       <p>{stock.num_of_shares} shares</p>
-                   </Link>
-                 );
-               })}
+               <h1 className="profile-position">Positions</h1>
+                <div className="profile-stock-containers">
+                {this.state.userStocks.map(stock => {
+                  return (
+                    <Link className="profile-stock-info-container" key={stock.stock_symbol} to={`/stock/${stock.stock_symbol}`}>
+                        <h1 className="single-quote">${stock.stock_symbol}</h1>
+                        <p className="num-shares">Number of Shares:</p>
+                        <p>{stock.num_of_shares} shares</p>
+                    </Link>
+                  );
+                })}
+              </div>
              </div>
          </div>
        </>

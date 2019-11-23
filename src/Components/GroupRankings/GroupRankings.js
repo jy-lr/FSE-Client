@@ -122,7 +122,9 @@ class GroupRankings extends React.Component {
                 })}
                 </div>
                 <h3 className="ranking-time">Time Remaining: {this.calculateTimeLeft()} days</h3>
+
             </div>
+
             </>
         );
     }
