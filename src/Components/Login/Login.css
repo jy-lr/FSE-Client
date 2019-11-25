@@ -224,6 +224,9 @@ label {
     .landing-stock-info-container > p {
         font-size: 14px;
     }
+    .landing-container > h1 {
+        font-size: 16px;
+    }
 }
 @media only screen and (max-width: 700px) and (min-width: 600px) {
     .login-form {
@@ -252,6 +255,9 @@ label {
     }
     .landing-stock-info-container > p {
         font-size: 14px;
+    }
+    .landing-container > h1 {
+        font-size: 16px;
     }
 }
 
