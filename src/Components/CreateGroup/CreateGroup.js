@@ -98,11 +98,11 @@ class CreateGroup extends React.Component {
                 <form className="search-user-container" onSubmit={e => this.createGroup(e)}>
                     <label htmlFor="groupname" id="group-name">Group Name</label>
                     <input id="groupname"></input>
-            <div className="search-users-results">
-                {this.state.addedUsers.map(user => {
-                    return (
-                    <div key={user.id} className="result-user">
-                        <h3 id="added-username">{user.user_name}</h3>
+                    <div className="search-users-results">
+                        {this.state.addedUsers.map(user => {
+                        return (
+                            <div key={user.id} className="result-user">
+                            <h3 id="added-username">{user.user_name}</h3>
                     </div>)}
                 )}
             </div>                    

@@ -17,6 +17,10 @@
     margin-bottom: 2rem;
 }
 
+.not-enough-balance {
+    color: red;
+}
+
 .stock-info {
     display: flex;
     justify-content: space-between;

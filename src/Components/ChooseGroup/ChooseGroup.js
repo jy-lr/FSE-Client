@@ -32,13 +32,13 @@ class ChooseGroup extends React.Component {
   handleLoading = () => {
     const style = {
       "display": 'flex',
-      "justify-content": 'center',
-      "align-items": 'center',
+      "justifyContent": 'center',
+      "alignItems": 'center',
       "height": '-webkit-fill-available',
-      "background-color": "#343a42"
+      "backgroundColor": "#343a42"
     }
     return (
-      <div classname="loading-icon" style={style}>
+      <div className="loading-icon" style={style}>
         <Loader
           type="Grid"
           color="#ddad6b"
@@ -85,7 +85,6 @@ class ChooseGroup extends React.Component {
   }
 
   render(){
-    console.log(!this.state.loading)
     return (
       <>
       <Nav />

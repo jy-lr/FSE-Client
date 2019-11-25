@@ -27,7 +27,8 @@ class SingleStock extends React.Component {
       totalCost: 0,
       availableBalance: 0,
       userStocks: [],
-      news: []
+      news: [],
+      notEnoughCash: ''
     }
   }
 
@@ -68,22 +69,28 @@ class SingleStock extends React.Component {
     const groupid = this.context.selectedGroup.groupid
     let totalCost = quantity*this.state.stockData.latestPrice
 
-    await this.setState({totalCost: totalCost})
-
-    const filterQuote = this.state.userStocks.filter(data => data.stock_symbol === stock)
-
-    if (filterQuote.length === 0) {
-      equityService.buyStock(stock, quantity, groupid)
+    if (totalCost > this.context.updateBalance.cash_balance) {
+      this.setState({notEnoughCash: 'Not enough cash'})
     } else {
-      const filteredQuoteId = filterQuote[0].id
-      const filteredQuoteNum = parseInt(filterQuote[0].num_of_shares) + parseInt(this.state.quantity)
-      equityService.updateStockEquity(filteredQuoteId, filteredQuoteNum)
+      this.setState({notEnoughCash: ''})
+      const filterQuote = this.state.userStocks.filter(data => data.stock_symbol === stock)
 
-      this.updateUserStocks(filteredQuoteId, filteredQuoteNum)
+      if (filterQuote.length === 0) {
+        equityService.buyStock(stock, quantity, groupid)
+      } else {
+        const filteredQuoteId = filterQuote[0].id
+        const filteredQuoteNum = parseInt(filterQuote[0].num_of_shares) + parseInt(this.state.quantity)
+        equityService.updateStockEquity(filteredQuoteId, filteredQuoteNum)
+  
+        this.updateUserStocks(filteredQuoteId, filteredQuoteNum)
+      }
     }
+
+    await this.setState({totalCost: totalCost})
 
     this.handleAvailableBalance()
   }
+
 
   updateUserStocks = async (id, num) => {
     const groupid = this.context.selectedGroup.groupid
@@ -95,8 +102,12 @@ class SingleStock extends React.Component {
 
 
   handleAvailableBalance = () =>{
-    let leftBalance = this.context.updateBalance.cash_balance - this.state.totalCost
-    this.setState({availableBalance: leftBalance})
+    if (this.state.totalCost > this.context.updateBalance.cash_balance) {
+      return null
+    } else {
+      let leftBalance = this.context.updateBalance.cash_balance - this.state.totalCost
+      this.setState({availableBalance: leftBalance})
+    }
 
     this.context.updateSelectedGroupData(this.state.availableBalance)
     
@@ -134,7 +145,6 @@ class SingleStock extends React.Component {
           <h1 className="stock-fullname">{this.state.stockData.companyName}</h1>
           <StockChart stockData={this.state.graphData}/>
           <Link to={this.state.userStocks[0] ? `/profile/${this.state.userStocks[0].groupid}`: '/groups'}><button id="back-button">Back</button></Link>
-
           <div key={this.state.stockData.symbol} className="stock-info">
             <section className="stock-info-container">
               <div>
@@ -158,6 +168,7 @@ class SingleStock extends React.Component {
               </div>
             </section>
             <form className="buy-form" onSubmit={(e) => this.handleBuy(e)}>
+            <p className="not-enough-balance">{(this.state.notEnoughCash.length > 0)? this.state.notEnoughCash: null}</p>
               <p><span className="available-balance">Available Balance: </span>${this.context.updateBalance.cash_balance}</p>
               <div>
                 <label className="quantity-label">Quantity</label>
