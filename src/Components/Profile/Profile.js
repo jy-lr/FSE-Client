@@ -62,8 +62,6 @@ class Profile extends React.Component {
     } 
   })
 
-  console.log(filteredGraphData)
-
    if (this.state.userGraphData.length < 1) {
     return userGraphService.createGraphData(groupGraphData)
       .then(newGraphData => this.state.userGraphData.push(newGraphData))

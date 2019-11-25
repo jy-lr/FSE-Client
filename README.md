@@ -1,6 +1,6 @@
 # Fantasy Stock Exchange
 
-![screenshots](/src/Images/mockup.PNG)
+![screenshots](/src/pic/mockup.png)
 
 ## About
 Fantasy Stock Exchange is a stock trading app that allows users to learn the principles of trading stocks, all while having fun competing with friends.  
