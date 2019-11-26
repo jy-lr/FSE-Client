@@ -68,7 +68,7 @@ class Login extends React.Component{
                   <p className="quote-title">Price:</p>
                   <p>$135 &nbsp; &nbsp; <span className="login-arrow-color"><FaCaretUp />5%</span></p>
                   <p className="quote-title">Open Price:</p>
-                  <p>$135</p>
+                  <p>$130</p>
                   <p className="quote-title">52 Week High:</p>
                   <p>$135</p>
                   <p className="quote-title">52 Week Low:</p>
