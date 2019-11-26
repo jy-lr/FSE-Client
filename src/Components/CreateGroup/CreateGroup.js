@@ -48,6 +48,7 @@ class CreateGroup extends React.Component {
 
         groupService.createGroup({group_name: groupname.value})
         .then(group => {
+            userGroupService.addUserToGroup({userid: 38, groupid: group.id, cash_balance: 10000})
             for(let i = 0; i < this.state.addedUsers.length; i++){
                 let current = this.state.addedUsers[i];
                 userGroupService.addUserToGroup({userid: current.id, groupid: group.id, cash_balance: 10000})
