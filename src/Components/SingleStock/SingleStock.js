@@ -33,7 +33,7 @@ class SingleStock extends React.Component {
 
   componentDidMount = () => {
     let stockQuote = this.state.stock
-    return fetch(`https://sandbox.iexapis.com/stable/stock/${stockQuote}/quote?token=${config.STOCK_TOKEN}`)
+    return fetch(`${config.STOCK_URL}stable/stock/${stockQuote}/quote?token=${config.STOCK_TOKEN}`)
       .then(res => res.json())
       .then(data => this.setState({stockData: data}))
   }
@@ -46,11 +46,11 @@ class SingleStock extends React.Component {
         this.setState({userStocks})
        })
 
-    fetch(`https://sandbox.iexapis.com/stable/stock/${stockQuote}/chart/5d?token=${config.STOCK_TOKEN}`)
+    fetch(`${config.STOCK_URL}stable/stock/${stockQuote}/chart/5d?token=${config.STOCK_TOKEN}`)
        .then(res => res.json())
        .then(data => this.setState({graphData: data}))
 
-    fetch(`https://sandbox.iexapis.com/stable/stock/${stockQuote}/news/last/3?token=${config.STOCK_TOKEN}`)
+    fetch(`${config.STOCK_URL}stable/stock/${stockQuote}/news/last/3?token=${config.STOCK_TOKEN}`)
        .then(res => res.json())
        .then(data => this.setState({news: data}))
   }

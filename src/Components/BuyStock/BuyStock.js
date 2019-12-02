@@ -19,7 +19,7 @@ class BuyStock extends React.Component{
     handleSearch = () => {
         let stockQuote = this.state.searchVal
     
-        return fetch(`https://sandbox.iexapis.com/stable/search/${stockQuote}?token=${config.STOCK_TOKEN}`)
+        return fetch(`https://sandbox.iexapis.com/stable/search/${stockQuote}?token=Tpk_8d02cb5986fb405bad198d090b3ac15a`)
           .then(res => res.json())
           .then(data => this.setState({searchResult: data}))
       }

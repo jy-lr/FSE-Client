@@ -4,6 +4,7 @@ import Nav from '../Nav/Nav';
 import equityService from '../../Services/equity-service';
 import Context from '../Context/Context';
 import {Link} from 'react-router-dom';
+import config from '../../config'
 
 class SellStock extends React.Component{
    static contextType = Context
@@ -38,7 +39,7 @@ class SellStock extends React.Component{
          }
          query += queryPart;
        }
-       return fetch(`https://sandbox.iexapis.com/stable/stock/market/batch?symbols=${query}&types=quote&token=Tpk_8d02cb5986fb405bad198d090b3ac15a`)
+       return fetch(`${config.STOCK_URL}stable/stock/market/batch?symbols=${query}&types=quote&token=${config.STOCK_TOKEN}`)
      }
    handleSell(e) {
        let i = e.target.value;

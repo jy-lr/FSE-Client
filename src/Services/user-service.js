@@ -42,5 +42,3 @@ const userService = {
 }
 
 export default userService;
-
-//https://sandbox.iexapis.com/stable/stock/aapl/quote?token=Tpk_8d02cb5986fb405bad198d090b3ac15a
