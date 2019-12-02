@@ -48,6 +48,7 @@ class CreateGroup extends React.Component {
 
         groupService.createGroup({group_name: groupname.value})
         .then(group => {
+            userGroupService.addUserToGroup({userid: 38, groupid: group.id, cash_balance: 10000})
             for(let i = 0; i < this.state.addedUsers.length; i++){
                 let current = this.state.addedUsers[i];
                 userGroupService.addUserToGroup({userid: current.id, groupid: group.id, cash_balance: 10000})
@@ -98,11 +99,11 @@ class CreateGroup extends React.Component {
                 <form className="search-user-container" onSubmit={e => this.createGroup(e)}>
                     <label htmlFor="groupname" id="group-name">Group Name</label>
                     <input id="groupname"></input>
-            <div className="search-users-results">
-                {this.state.addedUsers.map(user => {
-                    return (
-                    <div key={user.id} className="result-user">
-                        <h3 id="added-username">{user.user_name}</h3>
+                    <div className="search-users-results">
+                        {this.state.addedUsers.map(user => {
+                        return (
+                            <div key={user.id} className="result-user">
+                            <h3 id="added-username">{user.user_name}</h3>
                     </div>)}
                 )}
             </div>                    

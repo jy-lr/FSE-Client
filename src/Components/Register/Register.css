@@ -18,6 +18,12 @@ input {
     font-size: 16px;
 }
 
+.register-form {
+    background-color: #37445f;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
 .grey-bar {
     height: 8px; 
     background: #707070;

@@ -53,9 +53,9 @@ class LinearChart extends React.Component {
     //   {x: null, y: null},
     //   {x: 3, y: 9}
     // ]
-    const starting = {x: 0, y: 0}
-    data.unshift(starting)
-    return data
+    let newData = data.sort((a,b) => (a.x > b.x)? 1: -1)
+    console.log(newData)
+    return newData
   }
 
 // {group by date_trunc('hour', created)

@@ -7,6 +7,77 @@ form {
     margin-top: 18px;
 }
 
+.login-body-container {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    display: flex;
+    min-height: 800px;
+}
+
+.landing-container {
+    width: 30%;
+    padding-top: 4rem;
+    padding-left: 5%;
+    padding-right: 3%;
+    border-bottom-right-radius: 90%;
+    background-color: #5d677b;
+}
+
+
+
+.login-arrow-color {
+    color: #07b532;
+}
+
+.landing-stock-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.landing-stock-info-container {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 3rem;
+    height: 20rem;
+    padding: 1rem;
+    border-radius: 15px;
+    border-bottom: 3px solid #ddad6b;
+    width: 12rem;
+}
+
+.landing-container > h1 {
+    color: white;
+}
+
+.low {
+    color: #07b532;
+}
+
+.high {
+    color: #ff2825;
+}
+
+.land-rank {
+    color: #ddad6b;
+}
+
+.landing-stock-container > div {
+    margin-top: 3rem;
+}
+
+.login-form-container, .landing-container {
+    width: 100%
+}
+
+.login-form-container {
+    display: flex;
+    justify-content: center;
+}
+
 input {
     border: solid #707070 2px;
     margin: 17px;
@@ -58,11 +129,18 @@ label {
     margin-top: 4rem;
 }
 
+.login-form {
+    background-color: #37445f;
+    width: 22rem;
+    border-radius: 10px;
+    height: 35rem;
+}
+
 .login {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #343a42;
+    background-color: #0bcd98;
     min-height: -webkit-fill-available;
 }
 
@@ -80,9 +158,140 @@ label {
     .login-logo {
         width: 300px;
     }
+    .login-form {
+        width: 20rem;
+    }
+    .login-body-container {
+        flex-direction: column;
+    }
+    .landing-container {
+        width: 95%;
+        height: 37rem;
+        padding-right: 0;
+        border-bottom-right-radius: 50%;
+    }
+    .login-form {
+        height: 25rem;
+        margin-top: 2rem;
+        margin-right: auto;
+        margin-left: auto;
+        width: 18rem;
+    }
+    .login-form-container {
+        justify-content: flex-end;
+        padding-bottom: 3rem;
+    }
+    .landing-stock-info-container {
+        height: 18rem;
+        margin-left: 0;
+    }
+    .landing-stock-info-container > p {
+        font-size: 14px;
+    }
+    .landing-container > h1 {
+        font-size: 18px;
+    }
 }
-@media only screen and (max-width: 600px) and (min-width: 420px) {
+@media only screen and (max-width: 599px) and (min-width: 420px) {
     .login-logo {
         width: 400px;
+    }
+    .login-form {
+        width: 20rem;
+    }
+    .login-body-container {
+        flex-direction: column;
+    }
+    .landing-container {
+        width: 95%;
+        height: 37rem;
+        padding-right: 0;
+        border-bottom-right-radius: 50%;
+    }
+    .login-form {
+        height: 25rem;
+        margin-top: 2rem;
+        margin-right: 4rem;
+        width: 18rem;
+    }
+    .login-form-container {
+        justify-content: flex-end;
+        padding-bottom: 3rem;
+    }
+    .landing-stock-info-container {
+        height: 18rem;
+    }
+    .landing-stock-info-container > p {
+        font-size: 14px;
+    }
+    .landing-container > h1 {
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+    .login-form {
+        width: 20rem;
+    }
+    .login-body-container {
+        flex-direction: column;
+    }
+    .landing-container {
+        width: 95%;
+        height: 36rem;
+        padding-right: 0;
+    }
+    .login-form {
+        height: 25rem;
+        margin-top: 0;
+        margin-right: 4rem;
+        width: 18rem;
+    }
+    .login-form-container {
+        justify-content: flex-end;
+        padding-bottom: 3rem;
+    }
+    .landing-stock-info-container {
+        height: 18rem;
+    }
+    .landing-stock-info-container > p {
+        font-size: 14px;
+    }
+    .landing-container > h1 {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 800px) and (min-width: 700px) {
+    .login-form {
+        width: 20rem;
+    }
+    .login-body-container {
+        flex-direction: column;
+    }
+    .landing-container {
+        width: 95%;
+        height: 36rem;
+        padding-right: 0;
+    }
+    .login-form {
+        height: 25rem;
+        margin-top: 0;
+        margin-right: 4rem;
+    }
+    .login-form-container {
+        justify-content: flex-end;
+        padding-bottom: 3rem;
+    }
+}
+
+@media only screen and (max-width: 900px) and (min-width: 790px) {
+    .login-form {
+        width: 20rem;
+    }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 901px) {
+    .login-form {
+        width: 20rem;
     }
 }

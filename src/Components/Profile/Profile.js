@@ -79,7 +79,7 @@ class Profile extends React.Component {
           userGraphService.getGraphData(filteredGraphData[0].groupid)
             .then(data => this.setState({userGraphData: data}))
         })
-   } else {
+   } else if (filteredGraphData.length === 0){
       userGraphService.createGraphData(groupGraphData)
         .then(() => {
           return userGraphService.getGraphData(groupGraphData.groupid)
