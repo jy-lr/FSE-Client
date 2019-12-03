@@ -102,6 +102,37 @@ input {
     border-radius: 20px;
 }
 
+.landing-register-button {
+    background-color: #07b532;
+    color: white;
+    margin: 13px;
+    font-size: 20px;
+    width: 102px;
+    -webkit-animation:colorchange 5s infinite alternate;
+    border-radius: 8px;
+}
+
+@keyframes colorchange {
+    0% {
+      background-color: #77D6F3;
+    }
+    20% {
+        background-color: #70D0EE
+    }
+    40% {
+        background-color: #54D684;
+    }
+    60% {
+        background-color: #2b6f8a;
+    }
+    80% {
+        background-color: #0B7CC7;
+    }
+    100% {
+        background-color: #AB07B1;
+    }
+  }
+
 .login-button-demo {
     background-color: #ddad6b;
     color: white;
@@ -133,7 +164,7 @@ label {
     background-color: #37445f;
     width: 22rem;
     border-radius: 10px;
-    height: 35rem;
+    height: 30rem;
 }
 
 .login {

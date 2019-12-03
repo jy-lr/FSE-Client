@@ -2,8 +2,11 @@ import React from 'react';
 import userService from '../../Services/user-service';
 import './Register.css';
 import icon from '../../pic/icon2.png'
+import Context from '../Context/Context'
 
 class Register extends React.Component {
+    static contextType = Context
+
     static defaultProps = {
         onRegistrationSuccess: () => {}
     }
@@ -21,6 +24,9 @@ class Register extends React.Component {
             password: password.value,
         })
         .then(user => {
+            const msg = "Registered Successfully!"
+            this.context.registerSucc(msg)
+
             full_name.value = '';
             user_name.value = '';
             password.value = '';
@@ -45,9 +51,9 @@ class Register extends React.Component {
                     <input id="full_name"/>
                     <label htmlFor="password" className="password">Password</label>
                     <input type="password" id="password"/>
-                    <label htmlFor="rpassword" className="rpassword">Repeat Password</label>
-                    <input type="password" id="rpassword"/>
                     <button className="register-button">Register </button>
+                    {(this.state.error? <p className="error-msg">{this.state.error}</p>: null)}
+
                 </form>
             </div>
         );

@@ -24,6 +24,10 @@ input {
     padding: 1rem;
 }
 
+.error-msg {
+    color: #ff2825;
+}
+
 .grey-bar {
     height: 8px; 
     background: #707070;

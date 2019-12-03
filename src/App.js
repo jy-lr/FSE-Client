@@ -25,6 +25,7 @@ class App extends React.Component {
     this.state = {
       selectedGroup: {},
       updateBalanceGroup: {},
+      sucMsg: '',
     }
   }
 
@@ -54,7 +55,17 @@ class App extends React.Component {
     .then(userGroups => userGroups)
   }
 
+  saveUserId = (id, username) => {
+    const user = {
+      id: id,
+      user_name: username
+    }
+    this.setState({user: user})
+  }
 
+  registerSucc = (msg) => {
+    this.setState({sucMsg: msg})
+  }
 
 
   render () {
@@ -63,7 +74,11 @@ class App extends React.Component {
       saveSelectedGroupData: this.saveSelectedGroupData,
       selectedGroup: this.state.selectedGroup,
       updateSelectedGroupData: this.updateSelectedGroupData,
-      updateBalance: this.state.updateBalanceGroup
+      updateBalance: this.state.updateBalanceGroup,
+      saveUserId: this.saveUserId,
+      user: this.state.user,
+      registerSucc: this.registerSucc,
+      sucMsg: this.state.sucMsg,
     }
 
     return (

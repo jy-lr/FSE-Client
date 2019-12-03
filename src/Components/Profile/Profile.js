@@ -119,6 +119,7 @@ class Profile extends React.Component {
              </div>
              <div className="profile-stock-container">
                <h1 className="profile-position">Positions</h1>
+               <p>To add stocks to your portfolio, use the search button</p>
                 <div className="profile-stock-containers">
                 {this.state.userStocks.map(stock => {
                   return (

@@ -30,6 +30,10 @@
     width: 100%;
 }
 
+.description {
+    text-align: center;
+}
+
 .ChooseGroup {
     background-color: #343a42;
     padding-top: 2.7rem;
