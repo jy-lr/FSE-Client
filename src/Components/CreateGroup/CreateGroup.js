@@ -47,7 +47,6 @@ class CreateGroup extends React.Component {
 
   handleAddedUsers = async e => {
     e.preventDefault()
-    console.log(e.target.value)
 
     let filterAddedUsers = this.state.addedUsers.filter(data => parseInt(data.id) === parseInt(e.target.value))
 
@@ -66,7 +65,6 @@ class CreateGroup extends React.Component {
 
   createGroup = e => {
     e.preventDefault();
-    console.log(this.state.groupName)
 
     groupService.createGroup({group_name: this.state.groupName})
     .then(group => {
@@ -107,7 +105,6 @@ class CreateGroup extends React.Component {
             </form>
             <div className="search-users-results" style={this.handleResultBox()}>
               {(this.state.searchTerm)?this.state.filteredUsers.map(users => {
-                console.log(users)
                 return (
                   <div key={users.id} className="result-user">
                     <button type="submit" onClick={(e) => this.handleAddedUsers(e)} className="search-user-button" value={users.id}>+</button>

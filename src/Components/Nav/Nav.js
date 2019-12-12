@@ -3,8 +3,9 @@ import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
 import userGroupService from '../../Services/user-group-service';
 import Context from '../Context/Context';
-import './Nav.css'
-import icon from '../../pic/icon3.png'
+import './Nav.css';
+import icon from '../../pic/icon3.png';
+import TokenService from '../../Services/token-service'
 
 class Nav extends React.Component {
   static contextType = Context;
@@ -25,6 +26,10 @@ class Nav extends React.Component {
 
   handleClick = (group) => {
     this.context.saveSelectedGroupData(group)
+  }
+
+  handleLogOut = () => {
+    TokenService.clearAuthToken()
   }
 
   
@@ -68,6 +73,7 @@ class Nav extends React.Component {
             );
             })}
             </div>
+            <Link to="/"><p className="logout" onClick={() => this.handleLogOut()}>Logout</p></Link>
             </Menu>
             <div className="nav">
                 <Link to="/groups"><img className="logo-holder" src={icon} alt="logo"></img></Link>
