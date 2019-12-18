@@ -49,7 +49,7 @@ class Login extends React.Component{
 
   handleDemo = () => {
     userService.postLogin({
-      user_name: "demo3",
+      user_name: "demo",
       password: "Password1!",
     })
     .then(res => {

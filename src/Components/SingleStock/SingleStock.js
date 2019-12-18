@@ -144,7 +144,7 @@ class SingleStock extends React.Component {
         <div className="singlestock">
           <h1 className="stock-fullname">{this.state.stockData.companyName}</h1>
           <StockChart stockData={this.state.graphData}/>
-          <Link to={this.state.userStocks[0] ? `/profile/${this.state.userStocks[0].groupid}`: '/groups'}><button id="back-button">Back</button></Link>
+          <Link to="/groups"><button id="back-button">Back</button></Link>
           <div key={this.state.stockData.symbol} className="stock-info">
             <section className="stock-info-container">
               <div>
