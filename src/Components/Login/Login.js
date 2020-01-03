@@ -6,13 +6,19 @@ import userService from '../../Services/user-service';
 import config from '../../config';
 import icon from '../../pic/icon2.png';
 import {FaCaretUp} from 'react-icons/fa';
-import Context from '../Context/Context'
+import Context from '../Context/Context';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from 'react-loader-spinner';
 
 
 class Login extends React.Component{
   static contextType = Context
 
-  state = {error: null}
+
+  state = {
+    error: null,
+    loading: false
+  }
 
   static defaultProps = {
     location: {},
@@ -48,24 +54,45 @@ class Login extends React.Component{
   }
 
   handleDemo = () => {
+    this.setState({loading: true})
     userService.postLogin({
       user_name: "demo",
       password: "Password1!",
     })
     .then(res => {
+      console.log(res.userId)
         this.context.saveUserId(res.userId, res.user_name)
         TokenService.saveAuthToken(res.authToken)
         this.onLoginSuccess();
     })
-    .catch(res => {
-        this.setState({ error: res.error })
-    })
+  }
+
+  handleLoading = () => {
+    const style = {
+      "display": 'flex',
+      "justifyContent": 'center',
+      "alignItems": 'center',
+      "height": '-webkit-fill-available',
+      "backgroundColor": "#343a42"
+    }
+    return (
+      <div className="loading-icon" style={style}>
+        <Loader
+          type="Grid"
+          color="#ddad6b"
+          height={100}
+          width={100}
+          timeout={3000} //3 secs
+        />
+      </div>
+    )
   }
 
   render(){
     const { error } = this.state;
     return (
-      
+      <>
+      {(this.state.loading)? this.handleLoading(): 
       <div className="login">
         <div className="login-log-container">
         <img className="login-logo" src={icon} alt="logo"/>     
@@ -108,11 +135,13 @@ class Login extends React.Component{
                   <label htmlFor="password" className="password">Password</label>
                   <input type="password" id="password"/>
                   <button type="submit" className="login-button">Login</button>
-                  <button className="login-button-demo"onClick={() => this.handleDemo()}>Demo</button>
+                  <p className="login-button-demo" onClick={() => this.handleDemo()}>Demo</p>
               </form>
             </div>
           </div>
       </div>
+      }
+      </>
     );
   }
 }
